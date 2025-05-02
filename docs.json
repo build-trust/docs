@@ -22,7 +22,13 @@
        {
           "group": "Agents",
           "pages": [
-              "agents/agents"
+              "agents/agents",
+              "agents/models",
+              "agents/tools",
+              "agents/knowledge",
+              "agents/planning",
+              "agents/memory",
+              "agents/storage"
           ]
        }
     ]
