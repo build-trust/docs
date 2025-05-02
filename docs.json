@@ -12,7 +12,7 @@
       "pages": [
         "index",
         "agent-orchestration",
-        "agent-to-agent-collaboration"
+        "agent-to-agent-communication"
       ]
   },
   "logo": {
