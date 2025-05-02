@@ -19,6 +19,7 @@
     ],
     "anchors": [
       {
+        "anchor": "Introduction",
         "pages": [
             "index",
             "agent-orchestration",
