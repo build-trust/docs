@@ -41,13 +41,6 @@
         ]
       },
       {
-        "group": "OPERARATION",
-        "pages": [
-          "operation/evals",
-          "operation/observability"
-        ]
-      },
-      {
         "group": "INTEGRATION",
         "pages": [
           "integration/portals",
@@ -73,6 +66,13 @@
           "trust/end-to-end-encryption",
           "trust/mutual-authentication",
           "trust/access-control"
+        ]
+      },
+      {
+        "group": "OPERARATION",
+        "pages": [
+          "operation/evals",
+          "operation/observability"
         ]
       }
     ]
