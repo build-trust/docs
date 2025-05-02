@@ -16,15 +16,15 @@
               "agents/agents"
             ]
          }
-      ]
-  },
-  "global": {
-    "pages": [
-      "index",
-      "agent-orchestration",
-      "agent-collaboration",
-      "get-started"
-    ]
+      ],
+      "global": {
+        "pages": [
+          "index",
+          "agent-orchestration",
+          "agent-collaboration",
+          "get-started"
+        ]
+      }
   },
   "logo": {
     "light": "/logo/light.svg",
