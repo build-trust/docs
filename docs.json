@@ -58,9 +58,12 @@
       {
         "group": "TRUST",
         "pages": [
-          "agents/agents",
-          "agents/models",
-          "agents/tools"
+          "trust/enrollment-tickets",
+          "trust/cryptographic-identities",
+          "trust/attribute-credentials",
+          "trust/end-to-end-encryption",
+          "trust/mutual-authentication",
+          "trust/access-control"
         ]
       },
       {
