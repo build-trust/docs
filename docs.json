@@ -14,6 +14,14 @@
         "agent-orchestration",
         "agent-collaboration",
         "get-started"
+      ],
+      "groups": [
+         {
+            "group": "Agents",
+            "pages": [
+              "agents/agents"
+            ]
+         }
       ]
   },
   "logo": {
