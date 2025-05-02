@@ -9,15 +9,13 @@
   },
   "favicon": "/favicon.svg",
   "navigation": {
+      "pages": [
+        "index",
+        "agent-orchestration",
+        "agent-collaboration",
+        "get-started"
+      ],
       "groups": [
-         {
-           "pages": [
-              "index",
-              "agent-orchestration",
-              "agent-collaboration",
-              "get-started"
-            ]
-         },
          {
             "group": "Agents",
             "pages": [
