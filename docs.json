@@ -11,16 +11,27 @@
   "navigation": {
     "groups": [
         {
-          "group": "Introduction",
+          "group": "GET STARTED",
           "pages": [
               "index",
               "agent-orchestration",
               "agent-collaboration",
-              "get-started"
           ]
         },
        {
-          "group": "Agents",
+          "group": "AGENTS",
+          "pages": [
+              "agents/agents",
+              "agents/models",
+              "agents/tools",
+              "agents/knowledge",
+              "agents/planning",
+              "agents/memory",
+              "agents/storage"
+          ]
+       },
+       {
+          "group": "COLLABORATION",
           "pages": [
               "agents/agents",
               "agents/models",
