@@ -14,8 +14,11 @@ from sys import argv
 async def main(node):
     agent = await Agent.start(
         node=node,
-        model=Model("llama3.3"),
-        instructions="You answer all quations like Jack Sparrow",
+        instructions="""
+            You are an agent that specializes
+            in giving advice on creating safe,
+            secure, and scalable software.
+        """
     )
 
     await Repl.run(agent, argv[1])
