@@ -9,22 +9,28 @@
   },
   "favicon": "/favicon.svg",
   "navigation": {
-      "groups": [
-         {
-            "group": "Agents",
-            "pages": [
-              "agents/agents"
-            ]
-         }
-      ],
-      "global": {
-        "pages": [
-          "index",
-          "agent-orchestration",
-          "agent-collaboration",
-          "get-started"
-        ]
-      }
+    "groups": [
+       {
+          "group": "Agents",
+          "pages": [
+            "agents/agents"
+          ]
+       }
+    ],
+    "global": {
+      "anchors": [
+        {
+          "anchor": "Documentation",
+          "icon": "book-open",
+          "pages": [
+              "index",
+              "agent-orchestration",
+              "agent-collaboration",
+              "get-started"
+          ]
+        }
+      ]
+    }
   },
   "logo": {
     "light": "/logo/light.svg",
