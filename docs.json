@@ -11,13 +11,13 @@
   "navigation": {
       "groups": [
          {
-           "group": "",
+           "group": "A",
            "pages": [
               "index",
               "agent-orchestration",
               "agent-collaboration",
               "get-started"
-            ],
+            ]
          },
          {
             "group": "Agents",
