@@ -10,46 +10,73 @@
   "favicon": "/favicon.svg",
   "navigation": {
     "groups": [
-        {
-          "group": "GET STARTED",
-          "pages": [
-              "index",
-              "agent-orchestration",
-              "agent-collaboration"
-          ]
-        },
-       {
-          "group": "AGENTS",
-          "pages": [
-              "agents/agents",
-              "agents/models",
-              "agents/tools",
-              "agents/knowledge",
-              "agents/planning",
-              "agents/memory",
-              "agents/storage"
-          ]
-       },
-       {
-          "group": "COLLABORATION",
-          "pages": [
-              "agents/agents",
-              "agents/models",
-              "agents/tools",
-              "agents/knowledge",
-              "agents/planning",
-              "agents/memory",
-              "agents/storage"
-          ]
-       }
+      {
+        "group": "GET STARTED",
+        "pages": [
+          "index",
+          "agent-orchestration",
+          "agent-collaboration"
+        ]
+      },
+      {
+        "group": "AGENTS",
+        "pages": [
+          "agents/agents",
+          "agents/models",
+          "agents/tools",
+          "agents/knowledge",
+          "agents/planning",
+          "agents/memory",
+          "agents/storage"
+        ]
+      },
+      {
+        "group": "COLLABORATION",
+        "pages": [
+          "agents/agents",
+          "agents/models",
+          "agents/tools",
+          "agents/knowledge",
+          "agents/planning"
+        ]
+      },
+      {
+        "group": "INTEGRATION",
+        "pages": [
+          "agents/agents",
+          "agents/models",
+          "agents/tools"]
+      },
+      {
+        "group": "RUNTIME",
+        "pages": [
+          "agents/agents",
+          "agents/models",
+          "agents/tools"
+        ]
+      },
+      {
+        "group": "TRUST",
+        "pages": [
+          "agents/agents",
+          "agents/models",
+          "agents/tools"
+        ]
+      },
+      {
+        "group": "OPERARATION",
+        "pages": [
+          "agents/agents",
+          "agents/models",
+          "agents/tools"
+        ]
+      }
     ]
   },
   "logo": {
     "light": "/logo/light.svg",
     "dark": "/logo/dark.svg"
   },
-  "navbar": {
-  },
-  "footer": {
-  }
+  "navbar": {},
+  "footer": {}
 }
