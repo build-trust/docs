@@ -41,11 +41,10 @@
         ]
       },
       {
-        "group": "INTEGRATION",
+        "group": "ENTERPRISE CONNECTIONS",
         "pages": [
           "integration/portals",
-          "integration/mcp",
-          "integration/a2a"
+          "integration/mcp"
         ]
       },
       {
@@ -58,6 +57,13 @@
         ]
       },
       {
+        "group": "OPERARATION",
+        "pages": [
+          "operation/evals",
+          "operation/observability"
+        ]
+      },
+      {
         "group": "TRUST",
         "pages": [
           "trust/enrollment-tickets",
@@ -66,13 +72,6 @@
           "trust/end-to-end-encryption",
           "trust/mutual-authentication",
           "trust/access-control"
-        ]
-      },
-      {
-        "group": "OPERARATION",
-        "pages": [
-          "operation/evals",
-          "operation/observability"
         ]
       }
     ]
