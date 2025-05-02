@@ -1,6 +1,17 @@
 ---
-title: 'Flows'
-description: 'Description of your new file.'
-icon: arrow-progress
+title: "Flows"
+description: "Description of your new file."
+icon: "arrow-progress"
 ---
 
+
+```python [expandable]
+flow = Flow()
+
+flow.add(START, agent)
+flow.add(agent, evaluator)
+flow.add(evaluator, {"rejected": agent, "accepted": END})
+
+flow = await Flow.start(node, flow)
+output = await flow.send(input)
+```
