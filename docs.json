@@ -19,7 +19,6 @@
     ],
     "anchors": [
       {
-        "anchor": "Documentation",
         "pages": [
             "index",
             "agent-orchestration",
