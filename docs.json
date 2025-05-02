@@ -11,7 +11,7 @@
   "navigation": {
     "groups": [
         {
-          "group": "Agent-to-Agent Collaboration",
+          "group": "Introduction",
           "pages": [
               "index",
               "agent-orchestration",
