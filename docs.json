@@ -15,11 +15,23 @@
           "pages": [
               "index",
               "agent-orchestration",
-              "agent-collaboration",
+              "agent-collaboration"
           ]
         },
        {
           "group": "AGENTS",
+          "pages": [
+              "agents/agents",
+              "agents/models",
+              "agents/tools",
+              "agents/knowledge",
+              "agents/planning",
+              "agents/memory",
+              "agents/storage"
+          ]
+       },
+       {
+          "group": "COLLABORATION",
           "pages": [
               "agents/agents",
               "agents/models",
