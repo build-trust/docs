@@ -12,7 +12,8 @@
       "pages": [
         "index",
         "agent-orchestration",
-        "agent-collaboration"
+        "agent-collaboration",
+        "get-started"
       ]
   },
   "logo": {
