@@ -11,7 +11,8 @@
   "navigation": {
       "groups": [
          {
-            "pages": [
+           "group": "",
+           "pages": [
               "index",
               "agent-orchestration",
               "agent-collaboration",
