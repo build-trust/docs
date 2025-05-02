@@ -13,24 +13,21 @@
        {
           "group": "Agents",
           "pages": [
-            "agents/agents"
+              "agents/agents"
           ]
        }
     ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "icon": "book-open",
-          "pages": [
-              "index",
-              "agent-orchestration",
-              "agent-collaboration",
-              "get-started"
-          ]
-        }
-      ]
-    }
+    "anchors": [
+      {
+        "anchor": "Documentation",
+        "pages": [
+            "index",
+            "agent-orchestration",
+            "agent-collaboration",
+            "get-started"
+        ]
+      }
+    ]
   },
   "logo": {
     "light": "/logo/light.svg",
