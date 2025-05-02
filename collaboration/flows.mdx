@@ -5,7 +5,9 @@ icon: "arrow-progress"
 ---
 
 
-```python [expandable]
+<RequestExample>
+
+```python generator-evaluator-flow.py
 flow = Flow()
 
 flow.add(START, agent)
@@ -15,3 +17,5 @@ flow.add(evaluator, {"rejected": agent, "accepted": END})
 flow = await Flow.start(node, flow)
 output = await flow.send(input)
 ```
+
+</RequestExample>
