@@ -1,7 +1,7 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "Ockam AI",
   "colors": {
     "primary": "#52C7EA",
     "light": "#07C983",
