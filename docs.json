@@ -10,23 +10,21 @@
   "favicon": "/favicon.svg",
   "navigation": {
     "groups": [
+        {
+          "group": "Introduction",
+          "pages": [
+              "index",
+              "agent-orchestration",
+              "agent-collaboration",
+              "get-started"
+          ]
+        },
        {
           "group": "Agents",
           "pages": [
               "agents/agents"
           ]
        }
-    ],
-    "anchors": [
-      {
-        "anchor": "Introduction",
-        "pages": [
-            "index",
-            "agent-orchestration",
-            "agent-collaboration",
-            "get-started"
-        ]
-      }
     ]
   },
   "logo": {
