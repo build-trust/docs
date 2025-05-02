@@ -1,6 +1,27 @@
 ---
-title: 'Agents'
-description: 'Description of your new file.'
-icon: star-shooting
+title: "Agents"
+description: "Description of your new file."
+icon: "star-shooting"
 ---
 
+<RequestExample>
+
+```python filename
+from ockam import Agent, Model, Node, Repl
+from sys import argv
+
+
+async def main(node):
+    agent = await Agent.start(
+        node=node,
+        model=Model("llama3.3"),
+        instructions="You answer all quations like Jack Sparrow",
+    )
+
+    await Repl.run(agent, argv[1])
+
+
+Node.run(main)
+```
+
+</RequestExample>
