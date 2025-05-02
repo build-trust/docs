@@ -9,19 +9,9 @@
   },
   "favicon": "/favicon.svg",
   "navigation": {
-    "tabs": [
-      {
-        "tab": "Guides",
-        "groups": [
-          {
-            "group": "Get Started",
-            "pages": [
-              "index"
-            ]
-          }
-        ]
-      }
-    ]
+      "pages": [
+        "index"
+      ]
   },
   "logo": {
     "light": "/logo/light.svg",
