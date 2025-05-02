@@ -1,12 +1,27 @@
 ---
 title: "Agents"
-description: "Description of your new file."
+description: "Ockam Agents are autonomous actors."
 icon: "star-shooting"
 ---
 
+
+<Steps>
+  <Step title="Install" iconType="regular" stepNumber={1}>
+    ```bash
+    curl -sSfL https://install.command.ockam.io | bash
+    ```
+  </Step>
+  <Step title="Run">
+    ```bash
+    ockam
+    ```
+  </Step>
+</Steps>
+
+
 <RequestExample>
 
-```python filename
+```python main.py
 from ockam import Agent, Model, Node, Repl
 from sys import argv
 
@@ -14,11 +29,11 @@ from sys import argv
 async def main(node):
     agent = await Agent.start(
         node=node,
-        instructions="""
+        instructions='''
             You are an agent that specializes
             in giving advice on creating safe,
             secure, and scalable software.
-        """
+        '''
     )
 
     await Repl.run(agent, argv[1])
