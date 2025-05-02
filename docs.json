@@ -33,26 +33,28 @@
       {
         "group": "COLLABORATION",
         "pages": [
-          "agents/agents",
-          "agents/models",
-          "agents/tools",
-          "agents/knowledge",
-          "agents/planning"
+          "collaboration/squads",
+          "collaboration/flows",
+          "collaboration/messages",
+          "collaboration/gaurds",
+          "collaboration/patterns"
         ]
       },
       {
         "group": "INTEGRATION",
         "pages": [
-          "agents/agents",
-          "agents/models",
-          "agents/tools"]
+          "integration/portals",
+          "integration/mcp",
+          "integration/a2a"
+        ]
       },
       {
         "group": "RUNTIME",
         "pages": [
-          "agents/agents",
-          "agents/models",
-          "agents/tools"
+          "runtime/nodes",
+          "runtime/workers",
+          "runtime/zones",
+          "runtime/clusters"
         ]
       },
       {
