@@ -100,3 +100,22 @@ ockam
 ```
 
 </CodeGroup>
+
+```python images/main/main.py
+from ockam import Agent, Node, Repl
+from sys import argv
+
+
+async def main(node):
+    agent = await Agent.start(node, "You are Henry, an expert legal assistant")
+    await Repl.start(agent, argv[1])
+
+
+Node.start(main)
+```
+
+run
+
+```bash
+ockam
+```
