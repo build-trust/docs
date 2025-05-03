@@ -38,6 +38,7 @@ async def main(node):
 Node.start(main)
 ```
 
+
 ```yaml ockam.yaml
 name: hello
 pods:
@@ -50,6 +51,7 @@ pods:
       outlets:
         - to: localhost:9000
 ```
+
 
 ```docker images/main/Dockerfile
 FROM cgr.dev/chainguard/python:latest-dev AS dev
@@ -69,11 +71,13 @@ ENV PATH="/app/venv/bin:$PATH"
 ENTRYPOINT ["python", "main.py"]
 ```
 
+
 ``` images/main/requirements.txt
 
 --extra-index-url https://build-trust.github.io/wheels/simple
 ockam
 ```
+
 
 ```bash tree
 » tree
@@ -87,6 +91,5 @@ ockam
         ├── main.py
         └── requirements.txt
 ```
-
 
 </CodeGroup>
