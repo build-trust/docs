@@ -1,6 +1,6 @@
 ---
 title: "Agents"
-description: "Ockam Agents are autonomous actors."
+description: "Ockam Agents are autonomous intelligent actors."
 icon: "star-shooting"
 ---
 
@@ -27,12 +27,6 @@ icon: "star-shooting"
 
 <CodeGroup>
 
-```python filename
-// add code here
-```
-
-</CodeGroup>
-
 ```python images/main/main.py
 from ockam import Agent, Node, Repl
 from sys import argv
@@ -46,15 +40,4 @@ async def main(node):
 Node.start(main)
 ```
 
-```python
-from ockam import Agent, Node, Repl
-from sys import argv
-
-
-async def main(node):
-    agent = await Agent.start(node, "You are Henry, an expert legal assistant")
-    await Repl.start(agent, argv[1])
-
-
-Node.start(main)
-```
+</CodeGroup>
