@@ -4,7 +4,7 @@
   "name": "Ockam AI",
   "colors": {
     "primary": "#52C7EA",
-    "light": "#07C983",
+    "light": "#52C7EA",
     "dark": "#52C7EA"
   },
   "favicon": "/favicon.svg",
