@@ -23,10 +23,10 @@
         "pages": [
           "agents/agents",
           "agents/models",
-          "agents/tools",
-          "agents/knowledge",
-          "agents/planning",
           "agents/memory",
+          "agents/tools",
+          "agents/planning",
+          "agents/knowledge",
           "agents/storage"
         ]
       },
