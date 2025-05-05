@@ -4,3 +4,30 @@ description: 'Description of your new file.'
 icon: file-magnifying-glass
 ---
 
+
+```python
+from ockam import Agent, Knowledge, Model, Node, Repl
+from sys import argv
+
+
+async def main(node):
+    nmap = Knowledge("nmap")
+    await nmap.add_document(
+        "cheatsheet",
+        "https://raw.githubusercontent.com/jasonniebauer/Nmap-Cheatsheet/refs/heads/master/README.md",
+        content_type="text/markdown",
+    )
+
+    agent = await Agent.start(
+        node=node,
+        instructions="You are Penelope, an expert in analyzing the security of networks",
+        model=Model("claude-3-7-sonnet-v1"),
+        knowledge=nmap,
+    )
+
+    await Repl.start(agent, argv[1])
+
+
+Node.start(main)
+```
+
