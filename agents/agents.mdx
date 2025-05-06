@@ -5,7 +5,10 @@ icon: "star-shooting"
 mode: "wide"
 ---
 
-![Agent](/images/agent.svg)
+
+![Agent](/agents.svg)
+
+![Agent](/images/agent-structure.svg)
 
 <Steps>
   <Step title="Install">
@@ -40,7 +43,6 @@ mode: "wide"
   </Step>
 </Steps>
 
-
 ```bash Generated Files
 » tree
 
@@ -67,7 +69,6 @@ async def main(node):
 Node.start(main)
 ```
 
-
 ```yaml ockam.yaml
 name: hello
 pods:
@@ -80,7 +81,6 @@ pods:
       outlets:
         - to: localhost:9000
 ```
-
 
 ```python images/main/main.py
 from ockam import Agent, Node, Repl
