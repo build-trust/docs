@@ -14,7 +14,7 @@ async def main(node):
     triage = await Agent.start(
         node=node,
         name="Language Triage",
-        instructions=r"""
+        instructions="""
             You are a language triage agent.
 
             When you're given some input text, output if that input
