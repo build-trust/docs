@@ -11,9 +11,7 @@ from sys import argv
 async def main(node):
     agent = await Agent.start(
         node=node,
-        instructions="""
-            You are Penelope, an expert in explaining security issues.
-        """,
+        instructions="You are Penelope, an expert in explaining security issues",
         tools=[McpTool("brave_search", "brave_web_search")],
     )
 
