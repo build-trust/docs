@@ -14,7 +14,7 @@ async def main(node):
     triage = await Agent.start(
         node=node,
         name="Language Triage",
-        instructions='''
+        instructions=r"""
             You are a language triage agent.
 
             When you're given some input text, output if that input
@@ -23,7 +23,7 @@ async def main(node):
             Output only one lower case word from the list: `english`, `french`, `spanish`, `hindi`.
             
             Do not say anything else.
-        ''',
+        """,
     )
 
     english_support = await Agent.start(
