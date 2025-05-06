@@ -1,33 +1,79 @@
 ---
-title: 'Memory'
-description: 'Description of your new file.'
-icon: memory
+title: "Memory"
+description: "Description of your new file."
+icon: "memory"
 ---
 
+```bash
 
+> curl -X POST -d '{"message":"What is an LLC?"}'  'http://localhost:9001/agents/henry' -H 'Content-Type: application/json'
+
+[{"content":"An LLC (Limited Liability Company) is a business structure that combines elements of both corporations and partnerships/sole proprietorships. Here are the key features of an LLC:\n\n1. Limited Liability Protection: Members (owners) are protected from personal liability for business debts and claims, meaning their personal assets are typically safe from business obligations.\n\n2. Flexible Tax Treatment: LLCs can choose how they want to be taxed:\n- As a sole proprietorship (single-member LLC)\n- As a partnership (multi-member LLC)\n- As a corporation (S-Corp or C-Corp)\n\n3. Flexible Management Structure:\n- Can be member-managed (owners run the business)\n- Can be manager-managed (hired professionals run the business)\n\n4. Less Formal Requirements:\n- Fewer recordkeeping and reporting requirements than corporations\n- More flexible operating agreements\n- Less rigid management structure\n\n5. Easy Formation:\n- File Articles of Organization with the state\n- Create an Operating Agreement\n- Obtain necessary permits and licenses\n\nBenefits include:\n- Personal asset protection\n- Tax flexibility\n- Less paperwork than corporations\n- Credibility with customers\n- Ability to have unlimited members (in most states)\n\nLLCs are popular among small business owners because they provide liability protection while maintaining operational flexibility and favorable tax treatment.","role":"assistant","tool_calls":[]}]%
+
+> curl -X POST -d '{"message":"What is an limited partnership?"}'  'http://localhost:9001/agents/henry'
+
+[{"content":"A Limited Partnership (LP) is a business structure that has at least one general partner and one or more limited partners. Here's a detailed breakdown:\n\nKey Features:\n\n1. Partnership Structure:\n- General Partner(s): Has unlimited liability and manages the business\n- Limited Partner(s): Acts as passive investor(s) with limited control\n\n2. Liability:\n- General Partners: Have unlimited personal liability for business debts\n- Limited Partners: Liability is limited to their investment amount\n\n3. Management:\n- General Partners handle day-to-day operations\n- Limited Partners cannot participate in management without risking their limited liability status\n\n4. Tax Treatment:\n- Pass-through taxation (profits/losses pass through to partners)\n- Partners pay taxes on their share of income on personal returns\n- No double taxation\n\nFormation Requirements:\n1. File Certificate of Limited Partnership with state\n2. Create Partnership Agreement\n3. Obtain necessary licenses and permits\n\nCommon Uses:\n- Real estate investments\n- Family business planning\n- Investment vehicles\n- Professional services\n\nAdvantages:\n- Limited liability for limited partners\n- Pass-through taxation\n- Flexibility in profit/loss allocation\n- Access to capital through limited partners\n\nDisadvantages:\n- General partner's unlimited liability\n- Limited partners cannot participate in management\n- More complex than general partnerships\n- More formal requirements than general partnerships","role":"assistant","tool_calls":[]}]%
+
+> curl -X POST 'http://localhost:9001/agents/henry' -d '{"scope":"client1","conversation":"1","message":"According to US law, what is the difference between a limited partnership and an LLC?"}'
+
+[{"content":"# Limited Partnership vs LLC: Key Differences\n\n## Legal Structure\n- **Limited Partnership (LP)**: Has at least one general partner (with unlimited liability) and one or more limited partners (with liability limited to investment)\n- **LLC (Limited Liability Company)**: All owners (members) enjoy limited liability protection\n\n## Liability Protection\n- **LP**: General partners have personal liability for partnership debts and obligations\n- **LLC**: All members are protected from personal liability for business debts\n\n## Management\n- **LP**: General partners manage the business; limited partners typically cannot participate in management without risking their limited liability status\n- **LLC**: Can be member-managed or manager-managed with flexible arrangements\n\n## Taxation\n- **LP**: Pass-through taxation; partnership itself is not taxed\n- **LLC**: Default pass-through taxation, but can elect to be taxed as a corporation (C-corp or S-corp)\n\n## Formation Requirements\n- **LP**: Requires filing a certificate of limited partnership with the state\n- **LLC**: Requires filing articles of organization with the state\n\nBoth entities are governed by state law, so specific requirements and provisions may vary by jurisdiction.","role":"assistant","tool_calls":[]}]%
+
+> curl -X POST 'http://localhost:9001/agents/henry' -d '{"scope":"client1","conversation":"1","message":"According to US law, what is an S Corp?"}'
+
+[{"content":"# S Corporation Under US Law\n\nAn S Corporation (S Corp) is not a distinct business structure like an LLC or corporation, but rather a special tax status elected through the IRS.\n\n## Key Features of S Corps\n\n### Tax Status\n- A tax election made under Subchapter S of the Internal Revenue Code\n- Corporation or LLC can elect S Corp status by filing Form 2553\n- Provides pass-through taxation similar to partnerships\n\n### Requirements to Qualify\n- Must be a domestic corporation\n- May have no more than 100 shareholders\n- Shareholders must be US citizens/residents, certain trusts, or estates (no foreign shareholders)\n- Can only have one class of stock (though voting rights can differ)\n- Cannot be an ineligible corporation (certain financial institutions, insurance companies)\n\n### Taxation Benefits\n- Avoids \"double taxation\" of C Corporations\n- Business income/losses pass through to shareholders' personal tax returns\n- Shareholders who work as employees can receive both salary and dividend distributions\n- Potential self-employment tax savings on portions taken as distributions\n\n### Operation\n- Must maintain corporate formalities (bylaws, meetings, minutes)\n- Must pay reasonable compensation to shareholder-employees before distributions\n\nS Corps are governed by federal tax law, though states may have their own requirements for S Corp recognition and taxation.","role":"assistant","tool_calls":[]}]%
+
+> curl -X POST 'http://localhost:9001/agents/henry' -d '{"scope":"client2","conversation":"1","message":"According to US law, how does copyright work?"}'
+
+[{"content":"# Copyright Under US Law\n\nCopyright in the US is governed primarily by the Copyright Act of 1976, which protects original works of authorship fixed in a tangible medium of expression. Here are the key aspects:\n\n## Protected Works\n- Literary, musical, dramatic, and artistic works\n- Sound recordings, movies, software, and architectural works\n- Requires minimal creativity, but must be original to the author\n\n## Rights Granted\nCopyright owners have exclusive rights to:\n- Reproduce the work\n- Create derivative works\n- Distribute copies\n- Publicly perform or display the work\n\n## Duration\n- For works created after January 1, 1978: Life of the author plus 70 years\n- For anonymous works, pseudonymous works, or works made for hire: 95 years from publication or 120 years from creation, whichever expires first\n\n## Limitations\n- Fair use doctrine allows limited use without permission (considering factors like purpose, nature, amount used, and market effect)\n- First sale doctrine permits reselling lawfully acquired copies\n- Various specific exceptions for education, libraries, etc.\n\n## Registration\n- Copyright exists automatically upon creation\n- Registration with the US Copyright Office is not required but provides important benefits:\n  - Prerequisite for filing infringement lawsuits\n  - Allows for statutory damages and attorney's fees\n  - Creates legal evidence of ownership\n\nWould you like me to elaborate on any particular aspect of copyright law?","role":"assistant","tool_calls":[]}]%
+
+> curl -X POST 'http://localhost:9001/agents/henry' -d '{"scope":"client2","conversation":"1","message":"According to US law, how do trademarks work?"}'
+
+[{"content":"# Trademark Law in the US\n\nTrademarks are primarily governed by the Lanham Act (Trademark Act of 1946) and state common law. Here's how trademarks work under US law:\n\n## Definition and Purpose\n- Trademarks protect words, names, symbols, sounds, or colors that distinguish goods/services and indicate their source\n- Primary purpose is to prevent consumer confusion and protect business reputation\n\n## Types of Marks\n- Trademarks: Identify goods\n- Service marks: Identify services\n- Certification marks: Indicate compliance with standards\n- Collective marks: Indicate membership in organizations\n\n## Establishing Rights\n- Common law rights arise from actual use in commerce\n- Federal registration with the USPTO provides stronger nationwide protection\n- Registration can be based on:\n  - Current use in commerce\n  - Intent-to-use (requiring actual use within 3-6 months, with extensions available)\n\n## Registration Benefits\n- Nationwide priority as of filing date\n- Presumption of ownership and validity\n- Right to use ® symbol\n- Potential for incontestability after 5 years\n- Ability to record with US Customs to prevent importation of infringing goods\n\n## Duration and Maintenance\n- Federal registrations last 10 years\n- Renewable indefinitely with continued use\n- Maintenance filings required between 5-6 years and every 10 years\n\n## Protection Scope\n- Strength depends on distinctiveness (generic → descriptive → suggestive → arbitrary → fanciful)\n- Infringement determined by \"likelihood of confusion\" standard\n- Dilution protection for famous marks\n\n## Enforcement\n- Cease and desist letters\n- USPTO opposition/cancellation proceedings\n- Federal or state court litigation\n\nWould you like more details about any specific aspect of trademark law?","role":"assistant","tool_calls":[]}]%
+
+> curl -X POST 'http://localhost:9001/agents/henry' -d '{"scope":"client2","conversation":"2","message":"According to US law, what is a trade secret?"}'
+
+[{"content":"# Trade Secrets Under U.S. Law\n\nUnder U.S. federal law, primarily the Defend Trade Secrets Act (DTSA) of 2016, a trade secret is defined as:\n\nInformation that:\n1. The owner has taken reasonable measures to keep secret\n2. Derives independent economic value (actual or potential) from not being generally known\n3. Cannot be readily ascertained by proper means by others who can obtain economic value from its disclosure or use\n\nCommon examples of trade secrets include:\n- Customer lists\n- Manufacturing processes\n- Formulas (like the Coca-Cola recipe)\n- Business methods\n- Software algorithms\n- Marketing strategies\n\nUnlike patents, trademarks, or copyrights, trade secrets have no formal registration system and can theoretically last indefinitely as long as the information remains secret.\n\nState laws also protect trade secrets, with 48 states and the District of Columbia having adopted some version of the Uniform Trade Secrets Act (UTSA), which offers a similar definition.","role":"assistant","tool_calls":[]}]%
+
+> curl -X POST 'http://localhost:9001/agents/henry' -d '{"scope":"client2","conversation":"2","message":"According to US law, what is a patent?"}'
+
+[{"content":"# Patents Under U.S. Law\n\nUnder U.S. law, primarily governed by Title 35 of the United States Code, a patent is:\n\nA limited-duration property right granted by the U.S. government to an inventor, giving them the right to exclude others from making, using, offering for sale, selling, or importing their invention in exchange for public disclosure of the invention.\n\n## Key Characteristics:\n\n- **Types of Patents:**\n  - Utility patents (for processes, machines, manufactures, compositions of matter)\n  - Design patents (for ornamental designs)\n  - Plant patents (for new varieties of plants)\n\n- **Requirements for Patentability:**\n  1. Patentable subject matter\n  2. Novelty (new/not previously known)\n  3. Non-obviousness (not obvious to someone skilled in the relevant field)\n  4. Utility (useful, for utility patents)\n  5. Enablement (disclosure sufficient for others to make and use the invention)\n\n- **Duration:**\n  - Utility and plant patents: Generally 20 years from filing date\n  - Design patents: 15 years from issue date (for applications filed after May 13, 2015)\n\n- **Administration:**\n  Patents are examined, issued, and administered by the United States Patent and Trademark Office (USPTO)\n\nUnlike trade secrets, patents require public disclosure of the invention in exchange for exclusive rights.","role":"assistant","tool_calls":[]}]%
+
+> curl 'http://localhost:9001/agents/henry/conversations'
+
+[{"agent_name":"henry","conversation":"1","scope":"client1"},{"agent_name":"henry","conversation":"2","scope":"client2"},{"agent_name":"henry","conversation":"1","scope":"client2"}]%
+
+> curl 'http://localhost:9001/agents/henry/scopes/client1'
+
+[{"agent_name":"henry","conversation":"1","scope":"client1"}]%
+
+> curl 'http://localhost:9001/agents/henry/scopes/client2'
+
+[{"agent_name":"henry","conversation":"2","scope":"client2"},{"agent_name":"henry","conversation":"1","scope":"client2"}]%
+
+> curl 'http://localhost:9001/agents/henry/scopes/client2/conversations/1'
+
+[{"agent_name":"henry","conversation":"1","scope":"client2"}]%
+
+> curl 'http://localhost:9001/agents/henry/scopes/client2/conversations/2'
+
+[{"agent_name":"henry","conversation":"2","scope":"client2"}]%
+
+> curl -X POST 'http://localhost:9001/agents/henry' -d '{"scope":"client1","conversation":"1","message":"What, if any, types of corporate entities have I asked you about?"}'
+
+[{"content":"You've asked me about three types of corporate/business entities:\n\n1. Limited Partnership (LP) - A partnership structure with general and limited partners\n2. Limited Liability Company (LLC) - A flexible business structure providing limited liability\n3. S Corporation (S Corp) - A tax election status for qualifying corporations or LLCs\n\nThe first two (LP and LLC) are distinct legal business structures, while the S Corp is a special tax classification that existing corporations or LLCs can elect with the IRS if they meet specific requirements.","role":"assistant","tool_calls":[]}]%
+
+> curl -X POST 'http://localhost:9001/agents/henry' -d '{"scope":"client2","conversation":"1","message":"What, if any, types of corporate entities have I asked you about?"}'
+
+[{"content":"You haven't asked me about any specific types of corporate entities in our conversation. So far, you've only asked about two areas of intellectual property law:\n\n1. Copyright law in the US\n2. Trademark law in the US\n\nNeither of these questions involved corporate entities like corporations, LLCs, partnerships, sole proprietorships, or other business structures.","role":"assistant","tool_calls":[]}]%
+
+> curl -X POST 'http://localhost:9001/agents/henry' -d '{"scope":"client2","conversation":"1","message":"What forms of intellectual property have I asked you about?"}'
+
+[{"content":"You've asked me about two forms of intellectual property:\n\n1. Copyright - Your first question was about how copyright works under US law\n2. Trademark - Your second question was about how trademarks work under US law\n\nThese are two of the main forms of intellectual property protection in the US legal system. You haven't asked about other forms of intellectual property such as patents or trade secrets.","role":"assistant","tool_calls":[]}]%
+
+> curl -X POST 'http://localhost:9001/agents/henry' -d '{"scope":"client2","conversation":"2","message":"What forms of intellectual property have I asked you about?"}'
+
+[{"content":"# Forms of Intellectual Property You've Asked About\n\nYou have asked me about two forms of intellectual property under U.S. law:\n\n1. **Trade Secrets**\n   - Information deriving economic value from not being generally known\n   - Protected as long as secrecy is maintained\n   - No registration system\n\n2. **Patents**\n   - Government-granted exclusive rights for inventions\n   - Requires public disclosure\n   - Limited term protection (typically 20 years for utility patents)\n   - Administered by the USPTO\n\nThere are two other major forms of intellectual property under U.S. law that you haven't yet asked about: copyrights and trademarks.","role":"assistant","tool_calls":[]}]%
 ```
-> what is your name
-
-(in a pirate accent) Ah, me name be Captain Jack Sparrow,
-the infamous pirate captain of the Black Pearl. Savvy?
-
-> where do you live
-
-(laughs) Ah, me home be the sea, matey. Me ship, the Black Pearl,
-be me abode. But if ye be lookin' fer a place to find me on land,
-I've been known to frequent the island of Tortuga. It be a lawless
-place, full of scurvy dogs and scallywags, but it be home to me.
-
-> what have i asked you before
-
-(chuckles) Ah, ye be askin' about yer previous questions, eh?
-Alright then, matey... Ye asked me what me name be, and then ye
-asked me where I live. That be the extent o' our conversation
-so far, savvy?
-
->
-```
-
 
 ```python
 from ockam import Agent, HttpServer, Model, Node, Repl
@@ -39,7 +85,7 @@ async def main(node):
         node=node,
         name="henry",
         instructions="You are Henry, an expert legal assistant",
-        model=Model("deepseek-r1"),
+        model=Model("claude-3-7-sonnet-v1"),
     )
 
     await Repl.start(agent, argv[1])
@@ -49,11 +95,11 @@ Node.start(main, http_server=HttpServer(listen_address=argv[2]))
 ```
 
 ```yaml
-name: example05
+name: example16
 pods:
-  - name: main-pod
+  - name: main
     containers:
-      - name: main
+      - name: app
         image: main
         args: [localhost:9000, localhost:9001]
     portals:
