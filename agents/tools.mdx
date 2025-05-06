@@ -4,6 +4,29 @@ description: "Description of your new file."
 icon: "screwdriver-wrench"
 ---
 
+```python
+from ockam import Agent, Model, Node, McpClient, McpTool, Repl
+from sys import argv
+
+async def main(node):
+    agent = await Agent.start(
+        node=node,
+        instructions="""
+            You are Penelope, an expert in explaining security issues.
+        """,
+        tools=[McpTool("brave_search", "brave_web_search")],
+    )
+
+    await Repl.start(agent, argv[1])
+
+Node.start(
+    main,
+    mcp_clients=[
+        McpClient(name="brave_search", address="http://localhost:8000/sse"),
+    ],
+)
+```
+
 ```yaml
 name: example07
 pods:
@@ -37,25 +60,3 @@ pods:
         - to: localhost:9000
 ```
 
-```python
-from ockam import Agent, Model, Node, McpClient, McpTool, Repl
-from sys import argv
-
-async def main(node):
-    agent = await Agent.start(
-        node=node,
-        instructions="""
-            You are Penelope, an expert in explaining security issues.
-        """,
-        tools=[McpTool("brave_search", "brave_web_search")],
-    )
-
-    await Repl.start(agent, argv[1])
-
-Node.start(
-    main,
-    mcp_clients=[
-        McpClient(name="brave_search", address="http://localhost:8000/sse"),
-    ],
-)
-```
