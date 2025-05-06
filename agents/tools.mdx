@@ -13,8 +13,7 @@ pods:
         image: main
         args: [localhost:9000]
       - name: mcp
-        image: ghcr.io/build-trust/mcp-proxy@sha256:068bbc69f49bee42610401a829ba54e4e9b676adbef927685a271e276f572a8d
-        imagePullPolicy: Always
+        image: ghcr.io/build-trust/mcp-proxy
         env:
           - name: BRAVE_API_KEY
             valueFrom:
@@ -39,26 +38,16 @@ pods:
 ```
 
 ```python
-from ockam import Agent, Model, Node, McpTool, McpClient, Repl, Knowledge
+from ockam import Agent, Model, Node, McpClient, McpTool, Repl
 from sys import argv
 
 async def main(node):
     agent = await Agent.start(
         node=node,
-        name="web_search_assistant",
         instructions="""
-            You are a web search assistant.
-            
-            When you are given a question, decide if it is a
-            local or a web search question.
-
-            Depending on the type of question, invoke the appropriate tool
-            and explain its response.
+            You are Penelope, an expert in explaining security issues.
         """,
-        tools=[
-            McpTool("brave_search", "brave_web_search"),
-            McpTool("brave_search", "brave_local_search"),
-        ],
+        tools=[McpTool("brave_search", "brave_web_search")],
     )
 
     await Repl.start(agent, argv[1])
