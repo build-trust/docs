@@ -57,7 +57,7 @@
         ]
       },
       {
-        "group": "OPERARATION",
+        "group": "OPERATION",
         "pages": [
           "operation/evals",
           "operation/observability"
