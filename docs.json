@@ -36,7 +36,7 @@
           "collaboration/messages",
           "collaboration/squads",
           "collaboration/flows",
-          "collaboration/gaurds",
+          "collaboration/guards",
           "collaboration/patterns"
         ]
       },
@@ -57,7 +57,7 @@
         ]
       },
       {
-        "group": "OPERARATION",
+        "group": "OPERATION",
         "pages": [
           "operation/evals",
           "operation/observability"
