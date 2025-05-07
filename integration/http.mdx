@@ -3,12 +3,14 @@ title: "HTTP API"
 description: "Integrate your agents with HTTP calls"
 ---
 
-![Http](/images/http.png)
+
+![Http](/http.png)
 
 An agent node can provide an HTTP endpoint to access agents:
 
 - List all agents on the node.
 - Start a conversation with an agent.
+- List conversations.
 - List all the tools on the node.
 
 You can also easily create our own HTTP routes and tailor the interactions with your agent to your needs.
@@ -31,6 +33,7 @@ Node.start(main, http_server=HttpServer(listen_address=argv[2]))
 ```
 
 This will serve the node standard HTTP API to interact with agents. For example:
+
 ```bash
 # return the list of all agents referenced on the node (either local or remote)
 curl http://127.0.0.1:8000/agents
@@ -45,6 +48,7 @@ curl http://localhost:8000/agents/cerberus/scopes/acme
 ```
 
 You can also define your own API, by creating your own routes:
+
 ```python images/main/api.py
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
@@ -59,4 +63,5 @@ class Api:
             print(f"Analyzing the network {network}...")
             return JSONResponse(content={"status": "ok"})
 ```
-The access to `node` gives you the mean to interact with all the agents referenced on the node and even start new ones if necessary!
+
+The access to `node` gives you the mean to interact with all the agents referenced on the node and even start new ones if necessary\!
