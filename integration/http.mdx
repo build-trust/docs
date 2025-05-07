@@ -64,4 +64,20 @@ class Api:
             return JSONResponse(content={"status": "ok"})
 ```
 
-The access to `node` gives you the mean to interact with all the agents referenced on the node and even start new ones if necessary\!
+The access to `node` gives you the mean to interact with all the agents referenced on the node and even start new ones if necessary!
+
+Finally you set the `Api` on the `HttpServer` to ensure it is merged with the rest of the node API:
+```python images/main/main.py
+from ockam import Agent, Node, Repl, HttpServer
+from sys import argv
+from api import Api
+
+async def main(node):
+    agent = await Agent.start(node, 
+      name="cerberus", 
+      instructions="You use network tools to detect intrusions")
+    await Repl.start(agent, argv[1])
+
+
+Node.start(main, http_server=HttpServer(listen_address=argv[2], api=Api()))
+```
