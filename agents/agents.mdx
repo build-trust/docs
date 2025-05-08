@@ -5,7 +5,7 @@ icon: "star-shooting"
 mode: "wide"
 ---
 
-![Agent](/images/agent.svg)
+
 
 <Steps>
   <Step title="Install">
@@ -39,6 +39,9 @@ mode: "wide"
     ```
   </Step>
 </Steps>
+
+
+![Agent](/images/agent.svg)
 
 
 ```bash Generated Files
@@ -99,4 +102,40 @@ run
 
 ```bash
 ockam
+```
+
+
+```python
+from ockam import Agent, HttpServer, Model, Node, Repl
+from sys import argv
+
+
+async def main(node):
+    agent = await Agent.start(
+        node=node,
+        name="henry",
+        instructions="You are Henry, an expert legal assistant",
+        model=Model("deepseek-r1"),
+    )
+
+    await Repl.start(agent, argv[1])
+
+
+Node.start(main, http_server=HttpServer(listen_address=argv[2]))
+```
+
+```yaml
+name: example05
+pods:
+  - name: main-pod
+    containers:
+      - name: main
+        image: main
+        args: [localhost:9000, localhost:9001]
+    portals:
+      outlets:
+        - name: repl
+          to: localhost:9000
+        - name: http
+          to: localhost:9001
 ```
