@@ -36,7 +36,7 @@ mode: "wide"
     > 
     ```
   </Step>
-  <Step title="Chat with your agent">
+  <Step title="Send">
     ```
     > Tell me a tale
     ```
@@ -44,7 +44,7 @@ mode: "wide"
 </Steps>
 
 
-# The code that was generated
+## The genrated code
 
 ```bash Generated Files
 » tree
@@ -86,6 +86,8 @@ pods:
         - to: localhost:9000
 ```
 
+## Customize the agent
+
 
 ```python images/main/main.py
 from ockam import Agent, Node, Repl
@@ -100,11 +102,14 @@ async def main(node):
 Node.start(main)
 ```
 
-run
+Deploy again
 
 ```bash
 ockam
 ```
+
+
+## Start the http api
 
 
 ```python
@@ -141,3 +146,6 @@ pods:
         - name: http
           to: localhost:9001
 ```
+
+## Custom HTTP API
+
