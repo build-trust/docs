@@ -18,9 +18,17 @@ mode: "wide"
     mkdir hello && cd hello && ockam
     ```
 
+    Running the `ockam` command in an empty directory will setup a brand new app, in 
+    addition to creating you a production-ready deployment zone on our serverless 
+    runtime.
+    
     ![Agent](/images/agent.svg)
   </Step>
   <Step title="Chat with your agent">
+
+    The "hello world" app that was created includes an interactive [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) you can use to 
+    interact with your agent:
+    
     ```
     Welcome to Ockam 👋
     
@@ -32,8 +40,11 @@ mode: "wide"
     
     > 
     ```
+
+    This agent is already deployed and running on Ockam's serverless runtime. The REPL you're accessing on your local machine is running in the cloud, and you're connecting to it over a secure & private connection using Ockam's messaging protocols.
   </Step>
   <Step title="Send">
+    You can interact with the agent by typing in your instructions and pressing `[ENTER]`.
     ```
     > Tell me a tale
     ```
