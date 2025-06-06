@@ -1,13 +1,12 @@
 ---
 title: "Start Here"
 description: "Description of your new file."
-sidebarTitle: "Start Here"
+mode: "wide"
 ---
-
 
 <Steps>
   <Step title="Sign Up">
-  (Sign up)[ockam.io/signup] for an account with Ockam AI to create your new Cluster in Ockam AI.
+    (Sign up)[ockam.io/signup] for an account with Ockam AI to create your new Cluster in Ockam AI.
   </Step>
   <Step title="Install">
     Install the `ockam` command by running the following in your terminal.
@@ -18,7 +17,7 @@ sidebarTitle: "Start Here"
   </Step>
   <Step title="Deploy your first agent">
     After that, enroll your workstation as an administrator of your Cluster.
-    
+
     ```bash
     ockam
     ```
@@ -30,9 +29,8 @@ sidebarTitle: "Start Here"
     ![Agent](/images/agent.svg)
   </Step>
   <Step title="Chat with your agent">
-
     The "hello world" app includes an interactive [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) for interacting with your agent:
-    
+
     ```
     Welcome to Ockam 👋
     
@@ -49,6 +47,7 @@ sidebarTitle: "Start Here"
   </Step>
   <Step title="Send">
     Type your instructions and press `[ENTER]` to interact with the agent:
+
     ```
     > Tell me a tale
     ```
@@ -88,8 +87,6 @@ The `main.py` file contains the core logic for your agent. It uses Ockam's Pytho
 2. Start an agent with a specific prompt ("You are Jack Sparrow")
 3. Launch a REPL (interactive shell) that connects to this agent
 
-
-
 ```python images/main/main.py
 from ockam import Agent, Node, Repl
 from sys import argv
@@ -108,9 +105,8 @@ The `ockam.yaml` configuration file defines how to deploy your agent:
 - Creates a zone named `hello`
 - Creates a pod named `main-pod`
 - Runs a container using the `main` image (built from your Python code)
-- Sets up a portal outlet that will allow other nodes to communicate on port 
-`9000`
-
+- Sets up a portal outlet that will allow other nodes to communicate on port
+  `9000`
 
 ```yaml ockam.yaml
 name: hello
@@ -124,7 +120,6 @@ pods:
       outlets:
         - to: localhost:9000
 ```
-
 
 When you run `ockam`, it:
 
