@@ -128,24 +128,29 @@ When you run `ockam`, it:
 
 ## Customize the agent
 
+Now let's customize the agent. In the code below we change the prompt so that the
+agent is now an expert legal assistant instead of a pirate:
+
 ```python images/main/main.py
 from ockam import Agent, Node, Repl
 from sys import argv
-
 
 async def main(node):
     agent = await Agent.start(node, "You are Henry, an expert legal assistant")
     await Repl.start(agent, argv[1])
 
-
 Node.start(main)
 ```
 
-Deploy again
+Deploy again:
 
 ```bash
 ockam
 ```
+
+You'll again be connected to your agent that is running in the cloud on the 
+Ockam serverless runtime. Interact with it and you'll see it now responds with
+legal insight and not pirate talk.
 
 ## Start the http api
 
