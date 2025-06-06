@@ -48,7 +48,17 @@ mode: "wide"
   </Step>
 </Steps>
 
-## The genrated code
+## The generated code
+
+Within the `hello` directory, `ockam` has created a new project with several files:
+
+- A `README.md` with information about your project
+- An `ockam.yaml` configuration file that defines how your agent should be deployed
+- An `images` directory containing the agent's source code:
+  - `main.py` - The Python code that powers your agent
+  - `Dockerfile` - Instructions for building the agent's container
+  - `requirements.txt` - Python package dependencies
+  - `README.md` - Documentation specific to the agent implementation
 
 ```bash Generated Files
 » tree
@@ -63,6 +73,16 @@ mode: "wide"
         └── requirements.txt
 ```
 
+Let's examine these files:
+
+The `main.py` file contains the core logic for your agent. It uses Ockam's Python SDK to:
+
+1. Create a node that can communicate using Ockam's messaging protocols
+2. Start an agent with a specific prompt ("You are Jack Sparrow")
+3. Launch a REPL (interactive shell) that connects to this agent
+
+
+
 ```python images/main/main.py
 from ockam import Agent, Node, Repl
 from sys import argv
@@ -76,6 +96,15 @@ async def main(node):
 Node.start(main)
 ```
 
+The `ockam.yaml` configuration file defines how to deploy your agent:
+
+- Creates a zone named `hello`
+- Creates a pod named `main-pod`
+- Runs a container using the `main` image (built from your Python code)
+- Sets up a portal outlet that will allow other nodes to communicate on port 
+`9000`
+
+
 ```yaml ockam.yaml
 name: hello
 pods:
@@ -88,6 +117,14 @@ pods:
       outlets:
         - to: localhost:9000
 ```
+
+
+When you run `ockam`, it:
+
+1. Builds your Python code into a container image
+2. Deploys the container according to the `ockam.yaml` configuration
+3. Opens a portal inlet on your local workstation that connects to the outlet on the agent's container
+4. Connects to the agent's REPL over the secure portal
 
 ## Customize the agent
 
