@@ -14,8 +14,7 @@
         "group": "GET STARTED",
         "pages": [
           "index",
-          "agent-orchestration",
-          "agent-collaboration"
+          "start-here"
         ]
       },
       {
