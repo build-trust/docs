@@ -19,7 +19,7 @@ There are three key files that define an agent. First is the `ockam.yaml` file:
 </Tip>
 
 ```yaml ockam.yaml
-name: example001
+name: 001
 pods:
   - name: main-pod
     public: true
@@ -95,7 +95,7 @@ When you run `ockam` it will:
   ✔ Deployed zone example001 in cluster 25df35de87aa441b88f22a6c2a830a17
 
     The http server on the main-pod is available at:
-    https://25df35de87aa441b88f22a6c2a830a17-example001.ai.ockam.network
+    https://25df35de87aa441b88f22a6c2a830a17-001.ai.ockam.network
 
   ✔ Opened a portal to the outlet http on main-pod from tcp://localhost:8000
   ✔ Opened a portal to the outlet logs on logs-pod from tcp://localhost:3000
@@ -114,12 +114,12 @@ You can see the logs of your running python app on `http://localhost:3000/logs/e
 
 ```bash httpie
 http GET \
-  "https://25df35de87aa441b88f22a6c2a830a17-example001.ai.ockam.network/agents"
+  "https://25df35de87aa441b88f22a6c2a830a17-001.ai.ockam.network/agents"
 ```
 
 ```bash curl
 curl --request GET \
-  "https://25df35de87aa441b88f22a6c2a830a17-example001.ai.ockam.network/agents"
+  "https://25df35de87aa441b88f22a6c2a830a17-001.ai.ockam.network/agents"
 ```
 
 </CodeGroup>
@@ -128,7 +128,7 @@ curl --request GET \
 
 ```bash httpie
 http POST \
-  "https://25df35de87aa441b88f22a6c2a830a17-example001.ai.ockam.network/agents/henry" \
+  "https://25df35de87aa441b88f22a6c2a830a17-001.ai.ockam.network/agents/henry" \
   message="who are you"
 ```
 
@@ -136,7 +136,7 @@ http POST \
 curl --request POST \
   --header "Content-Type: application/json" \
   --data '{"message":"who are you"}' \
-  "https://25df35de87aa441b88f22a6c2a830a17-example001.ai.ockam.network/agents/henry"
+  "https://25df35de87aa441b88f22a6c2a830a17-001.ai.ockam.network/agents/henry"
 ```
 
 </CodeGroup>
@@ -145,15 +145,15 @@ curl --request POST \
 
 ```bash httpie
 http POST \
-  "https://25df35de87aa441b88f22a6c2a830a17-hello.ai.ockam.network/agents/henry?stream=true" \
-  message="who are you"
+  "https://25df35de87aa441b88f22a6c2a830a17-001.ai.ockam.network/agents/henry?stream=true" \
+  message="what is a patent"
 ```
 
 ```bash curl
 curl --request POST \
   --header "Content-Type: application/json" \
   --data '{"message": "what is a patent"}' \
-  "https://25df35de87aa441b88f22a6c2a830a17-example001.ai.ockam.network/agents/henry?stream=true"
+  "https://25df35de87aa441b88f22a6c2a830a17-001.ai.ockam.network/agents/henry?stream=true"
 ```
 
 </CodeGroup>
