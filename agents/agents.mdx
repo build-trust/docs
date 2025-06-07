@@ -56,40 +56,52 @@ Node.start(main)
 
 ```bash httpie
 http GET \
-	https://25df35de87aa441b88f22a6c2a830a17-example001.ai.ockam.network/agents
+  "https://25df35de87aa441b88f22a6c2a830a17-example001.ai.ockam.network/agents"
 ```
 
 
 ```bash curl
-curl --request GET \
-	"https://25df35de87aa441b88f22a6c2a830a17-example001.ai.ockam.network/agents"
+curl \
+  --request GET \
+  "https://25df35de87aa441b88f22a6c2a830a17-example001.ai.ockam.network/agents"
 ```
 
 </CodeGroup>
 
-```
-```
+<CodeGroup>
 
-```
+```bash httpie
 http POST \
-	https://25df35de87aa441b88f22a6c2a830a17-example001.ai.ockam.network/agents/henry \
-	message="who are you"
+  "https://25df35de87aa441b88f22a6c2a830a17-example001.ai.ockam.network/agents/henry" \
+  message="who are you"
 ```
 
+
+```bash curl
+curl \
+  --request POST \
+  --header "Content-Type: application/json" \
+  --data '{"message":"who are you"}'
+  "https://25df35de87aa441b88f22a6c2a830a17-example001.ai.ockam.network/agents/henry" \
 ```
+
+</CodeGroup>
+
+<CodeGroup>
+
+```bash httpie
 http POST \
-	'https://25df35de87aa441b88f22a6c2a830a17-hello.ai.ockam.network/agents/henry?stream=true' \
-	message="who are you"
+  "https://25df35de87aa441b88f22a6c2a830a17-hello.ai.ockam.network/agents/henry?stream=true" \
+  message="who are you"
 ```
 
-```
-curl --request POST --header "Content-Type: application/json" \
-    "https://25df35de87aa441b88f22a6c2a830a17-example001.ai.ockam.network/agents/henry" \
-    --data '{"message":"what is a patent"}'
+
+```bash curl
+curl \
+  --request POST \
+  --header "Content-Type: application/json" \
+  --data '{"message": "what is a patent"}' \
+  "https://25df35de87aa441b88f22a6c2a830a17-example001.ai.ockam.network/agents/henry?stream=true"
 ```
 
-```bash
-curl --request POST --header "Content-Type: application/json" \
-    "https://25df35de87aa441b88f22a6c2a830a17-example001.ai.ockam.network/agents/henry?stream=true" \
-    --data '{"message":"what is a patent"}'
-```
+</CodeGroup>
