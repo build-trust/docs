@@ -82,13 +82,17 @@
   "navbar": {
     "links": [
       {
-        "label": "GitHub",
-        "href": "https://github.com/built-trust/ockam",
-        "icon": "github"
+        "label": "Ockam.ai",
+        "href": "https://ockam.ai"
+      },
+            {
+        "label": "Open Source Code",
+        "href": "https://github.com/built-trust/ockam"
       },
       {
-        "label": "ockam.ai",
-        "href": "https://ockam.ai"
+        "label": "Contact Us",
+        "href": "https://ockam.io/contact"
+        
       }
     ],
     "primary": {
