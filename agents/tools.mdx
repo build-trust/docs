@@ -5,6 +5,12 @@ mode: "wide"
 description: "Agents can invoke tools in Python or via MCP"
 ---
 
+### Python Functions as Tools
+
+<Tip>
+  You can find all the code for this example [on Github](https://github.com/build-trust/ockam/tree/develop/examples/006).
+</Tip>
+
 ```python images/main/main.py
 from datetime import datetime
 from ockam import Agent, Model, Node, Tool
@@ -29,6 +35,12 @@ async def main(node):
 
 Node.start(main)
 ```
+
+### Tools provided by MCP Servers
+
+<Tip>
+  You can find all the code for this example [on Github](https://github.com/build-trust/ockam/tree/develop/examples/007).
+</Tip>
 
 ```yaml ockam.yaml
 name: example007
