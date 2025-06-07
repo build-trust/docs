@@ -1,59 +1,29 @@
 ---
 title: "Tools"
-description: ""
 icon: "screwdriver-wrench"
 ---
 
 ```python
-from ockam import Agent, Model, Node, McpClient, McpTool, Repl
-from sys import argv
+from datetime import datetime
+from ockam import Agent, Model, Node, Tool
+
+
+def current_iso8601_utc_time():
+    """
+    Returns the current UTC time in ISO 8601 format.
+    """
+    return datetime.utcnow().isoformat() + "Z"
+
 
 async def main(node):
-    agent = await Agent.start(
+    await Agent.start(
         node=node,
-        instructions="You are Penelope, an expert in explaining security issues",
-        tools=[McpTool("brave_search", "brave_web_search")],
+        name="henry",
+        instructions="You are Henry, an expert legal assistant",
+        model=Model("claude-3-7-sonnet-v1"),
+        tools=[Tool(current_iso8601_utc_time)],
     )
 
-    await Repl.start(agent, argv[1])
 
-Node.start(
-    main,
-    mcp_clients=[
-        McpClient(name="brave_search", address="http://localhost:8000/sse"),
-    ],
-)
-```
-
-```yaml
-name: example07
-pods:
-  - name: main-pod
-    containers:
-      - name: main
-        image: main
-        args: [localhost:9000]
-      - name: mcp
-        image: ghcr.io/build-trust/mcp-proxy
-        env:
-          - name: BRAVE_API_KEY
-            valueFrom:
-              secretKeyRef:
-                name: brave
-                key: key
-        args:
-          [
-            "--sse-port",
-            "8000",
-            "--sse-host",
-            "0.0.0.0",
-            "--pass-environment",
-            "--",
-            "npx",
-            "-y",
-            "@modelcontextprotocol/server-brave-search"
-          ]
-    portals:
-      outlets:
-        - to: localhost:9000
+Node.start(main)
 ```
