@@ -5,6 +5,15 @@ icon: "star-shooting"
 mode: "wide"
 ---
 
+Ockam Agents are intelligent autonomous actors powered by large language models. They understand natural language, engage in conversations, and perform complex tasks. Each agent:
+
+- Maintains a unique identity and long-running conversations
+- Accepts customization with specific knowledge and capabilities
+- Runs securely in an isolated environment
+- Communicates with other agents and systems using Ockam's secure messaging protocols
+
+There are three key files that define an agent. First is the `ockam.yaml` file:
+
 ```yaml ockam.yaml
 name: example001
 pods:
@@ -14,12 +23,33 @@ pods:
       - name: main
         image: main
 ```
+The `ockam.yaml` file above defines:
 
-```images/main/Dockerfile images/main/Dockerfile
+- `name: example001` - A unique name for this deployment zone
+- `pods` - A list of pods to run in the zone
+  - `name: main-pod` - The name of the pod
+  - `public: true` - Makes the pod accessible from the internet
+  - `containers` - The containers to run in the pod
+    - `name: main` - Container name 
+    - `image: main` - References the image built from the `Dockerfile` located at `images/<value>/Dockerfile`
+
+This minimal configuration creates a deployment that runs our agent code.
+
+Next is the `Dockerfile` file:
+
+```dockerfile images/main/Dockerfile
 FROM ghcr.io/build-trust/ockam-python:latest
 COPY . .
 ENTRYPOINT ["python", "main.py"]
 ```
+
+The `Dockerfile` above:
+
+- Uses the official Ockam Python base image which includes the Ockam SDK
+- Copies the agent code (main.py and other files) into the container
+- Sets the entrypoint to run main.py when the container starts
+
+Finally is the `main.py` file:
 
 ```python images/main/main.py
 from ockam import Agent, Node
@@ -31,6 +61,19 @@ async def main(node):
 
 Node.start(main)
 ```
+
+The `main.py` file above:
+
+- Imports the Ockam SDK
+- Defines an async main function that starts an agent with a specific prompt
+- Starts the node and agent
+
+When you run `ockam` it will:
+
+- Build the image from the Dockerfile
+- Deploy the container to the Ockam serverless runtime
+- Expose a public HTTP endpoint to the agent
+- Create two local (i.e., on your workstation) portals to the agent's HTTP endpoint and log output.
 
 ```[expandable]
 » ockam
