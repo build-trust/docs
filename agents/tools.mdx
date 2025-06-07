@@ -41,14 +41,14 @@ Node.start(main)
 ```bash httpie
 http POST \
 "https://25df35de87aa441b88f22a6c2a830a17-example006.ai.ockam.network/agents/henry" \
-message="Find links to cases currently in front of the US Supreme Court"
+message="Find links to cases currently in the US Supreme Court"
 ```
 
 
 ```bash curl
 curl --request POST \
 --header "Content-Type: application/json" \
---data '{ "message": "Find links to cases currently in front of the US Supreme Court" }' \
+--data '{ "message": "Find links to cases currently in the US Supreme Court" }' \
 "https://25df35de87aa441b88f22a6c2a830a17-example006.ai.ockam.network/agents/henry"
 ```
 
