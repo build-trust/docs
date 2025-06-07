@@ -12,8 +12,8 @@ description: "Agents can invoke tools in Python or via MCP"
 </Tip>
 
 ```python images/main/main.py
-from datetime import datetime
 from ockam import Agent, Model, Node, Tool
+from datetime import datetime
 
 
 def current_iso8601_utc_time():
@@ -95,8 +95,8 @@ ENTRYPOINT ["python", "main.py"]
 ```
 
 ```python images/main/main.py
-from datetime import datetime
 from ockam import Agent, Model, Node, McpTool, McpClient, Tool
+from datetime import datetime
 
 
 def current_iso8601_utc_time():
