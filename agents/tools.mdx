@@ -1,92 +1,46 @@
 ---
-title: "Tools"
-icon: "screwdriver-wrench"
+title: "Agents"
+description: "Ockam Agents are intelligent autonomous actors."
+icon: "star-shooting"
 mode: "wide"
-description: "Agents can invoke tools in Python or via MCP"
 ---
 
-### Python Functions as Tools
+Ockam Agents are intelligent autonomous actors powered by large language models. They understand natural language, engage in conversations, and perform complex tasks. Each agent:
+
+- Maintains a unique identity and long-running conversations
+- Accepts customization with specific knowledge and capabilities
+- Runs securely in an isolated environment
+- Communicates with other agents and systems using Ockam's secure messaging protocols
+
+There are three key files that define an agent. First is the `ockam.yaml` file:
 
 <Tip>
-  You can find all the code for this example [on Github](https://github.com/build-trust/ockam/tree/develop/examples/006).
-</Tip>
-
-```python images/main/main.py
-from ockam import Agent, Model, Node, Tool
-from datetime import datetime
-
-
-def current_iso8601_utc_time():
-    """
-    Returns the current UTC time in ISO 8601 format.
-    """
-    return datetime.utcnow().isoformat() + "Z"
-
-
-async def main(node):
-    await Agent.start(
-        node=node,
-        name="henry",
-        instructions="You are Henry, an expert legal assistant",
-        model=Model("claude-3-7-sonnet-v1"),
-        tools=[Tool(current_iso8601_utc_time)],
-    )
-
-
-Node.start(main)
-```
-
-<CodeGroup>
-
-```bash httpie
-http POST \
-  "https://25df35de87aa441b88f22a6c2a830a17-example006.ai.ockam.network/agents/henry" \
-  message="what is the current time"
-```
-
-```bash curl
-curl --request POST \
-  --header "Content-Type: application/json" \
-  --data '{ "message": "What is the current time?" }' \
-  "https://25df35de87aa441b88f22a6c2a830a17-example006.ai.ockam.network/agents/henry"
-```
-</CodeGroup>
-
-
-
-### Tools provided by MCP Servers
-
-<Tip>
-  You can find all the code for this example [on Github](https://github.com/build-trust/ockam/tree/develop/examples/007).
+  You can find all the code for this example [on Github](https://github.com/build-trust/ockam/tree/develop/examples/001).
 </Tip>
 
 ```yaml ockam.yaml
-name: example007
+name: 01
 pods:
   - name: main-pod
     public: true
     containers:
       - name: main
         image: main
-
-      - name: mcp
-        image: ghcr.io/build-trust/mcp-proxy
-        env:
-          - name: BRAVE_API_KEY
-            valueFrom:
-              secretKeyRef:
-                name: brave
-                key: key
-        args:
-          ["--sse-port", "8001", "--pass-environment",
-            "--", "npx", "-y", "@modelcontextprotocol/server-brave-search"]
 ```
 
-```yaml secrets.yaml
-- name: brave
-  fields:
-    key: "YOUR KEY HERE"
-```
+The `ockam.yaml` file above defines:
+
+- `name: 01` - A unique name for this deployment zone
+- `pods` - A list of pods to run in the zone
+  - `name: main-pod` - The name of the pod
+  - `public: true` - Makes the pod accessible from the internet
+  - `containers` - The containers to run in the pod
+    - `name: main` - Container name
+    - `image: main` - References the image built from the `Dockerfile` located at `images/<value>/Dockerfile`
+
+This minimal configuration creates a deployment that runs our agent code.
+
+Next is the `Dockerfile` file:
 
 ```bash images/main/Dockerfile
 FROM ghcr.io/build-trust/ockam-python:latest
@@ -94,56 +48,112 @@ COPY . .
 ENTRYPOINT ["python", "main.py"]
 ```
 
+The `Dockerfile` above:
+
+- Uses the official Ockam Python base image which includes the Ockam SDK
+- Copies the agent code (main.py and other files) into the container
+- Sets the entrypoint to run main.py when the container starts
+
+Finally is the `main.py` file:
+
 ```python images/main/main.py
-from ockam import Agent, Model, Node, McpTool, McpClient, Tool
-from datetime import datetime
-
-
-def current_iso8601_utc_time():
-    """
-    Returns the current UTC time in ISO 8601 format.
-    """
-    return datetime.utcnow().isoformat() + "Z"
+from ockam import Agent, Node
 
 
 async def main(node):
-    await Agent.start(
-        node=node,
-        name="henry",
-        instructions="""
-            You are Henry, an expert legal assistant.
-
-            When you are given a question, decide if your response can be better
-            with a web search. If so, use the web search tool to improve your response.
-        """,
-        model=Model("claude-3-7-sonnet-v1"),
-        tools=[
-            McpTool("brave_search", "brave_web_search"),
-            Tool(current_iso8601_utc_time),
-        ],
-    )
+    await Agent.start(node, "You are Henry, an expert legal assistant", "henry")
 
 
-Node.start(
-    main,
-    mcp_clients=[
-        McpClient(name="brave_search", address="http://localhost:8001/sse"),
-    ],
-)
+Node.start(main)
 ```
+
+The `main.py` file above:
+
+- Imports the Ockam SDK
+- Defines an async main function that starts an agent with a specific prompt
+- Starts the node and agent
+
+<Note>
+  Ensure you have [Docker](https://www.docker.com/get-started/) installed and running on your workstation before running the `ockam` command.
+</Note>
+
+When you run `ockam` it will:
+
+- Build the image from the Dockerfile
+- Deploy the container to the Ockam serverless runtime
+- Expose a public HTTP endpoint to the agent
+- Create two local (i.e., on your workstation) portals to the agent's HTTP endpoint and log output.
+
+```[expandable]
+» ockam
+    Deploying zone 01 in cluster 25df35de87aa441b88f22a6c2a830a17...
+
+  ✔ Created a repository for the image main
+  ✔ Built image main
+  ✔ Pushed image main
+
+  ✔ Deployed zone 01 in cluster 25df35de87aa441b88f22a6c2a830a17
+
+    The http server on the main-pod is available at:
+    https://25df35de87aa441b88f22a6c2a830a17-01.ai.ockam.network
+
+  ✔ Opened a portal to the outlet http on main-pod from tcp://localhost:8000
+  ✔ Opened a portal to the outlet logs on logs-pod from tcp://localhost:3000
+
+    ─────────────────────────────────────────────────
+    Press Ctrl+C to stop all portals and exit
+```
+
+### Logs
+
+You can see the logs of your running python app on `http://localhost:3000/logs/explorer` .
+
+### HTTP Server
+
+<CodeGroup>
+
+```bash httpie
+http GET \
+"https://25df35de87aa441b88f22a6c2a830a17-01.ai.ockam.network/agents"
+```
+
+```bash curl
+curl --request GET \
+"https://25df35de87aa441b88f22a6c2a830a17-01.ai.ockam.network/agents"
+```
+
+</CodeGroup>
 
 <CodeGroup>
 
 ```bash httpie
 http POST \
-  "https://25df35de87aa441b88f22a6c2a830a17-example006.ai.ockam.network/agents/henry" \
-  message="Find links to cases currently in the US Supreme Court"
+"https://25df35de87aa441b88f22a6c2a830a17-01.ai.ockam.network/agents/henry" \
+message="who are you"
 ```
 
 ```bash curl
 curl --request POST \
-  --header "Content-Type: application/json" \
-  --data '{ "message": "Find links to cases currently in the US Supreme Court" }' \
-  "https://25df35de87aa441b88f22a6c2a830a17-example006.ai.ockam.network/agents/henry"
+--header "Content-Type: application/json" \
+--data '{"message":"who are you"}' \
+"https://25df35de87aa441b88f22a6c2a830a17-01.ai.ockam.network/agents/henry"
 ```
+
+</CodeGroup>
+
+<CodeGroup>
+
+```bash httpie
+http POST \
+"https://25df35de87aa441b88f22a6c2a830a17-01.ai.ockam.network/agents/henry?stream=true" \
+message="what is a patent"
+```
+
+```bash curl
+curl --request POST \
+--header "Content-Type: application/json" \
+--data '{"message": "what is a patent"}' \
+"https://25df35de87aa441b88f22a6c2a830a17-01.ai.ockam.network/agents/henry?stream=true"
+```
+
 </CodeGroup>
