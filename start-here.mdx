@@ -76,6 +76,28 @@ Within the `hello` directory, `ockam` has created a new project with several fil
 
 Let's examine these files:
 
+The `ockam.yaml` configuration file defines how to deploy your agent:
+
+- Creates a zone named `hello`
+- Creates a pod named `main-pod`
+- Runs a container using the `main` image (built from your Python code)
+- Sets up a portal outlet that will allow other nodes to communicate on port
+  `9000`
+
+```yaml ockam.yaml
+name: hello
+pods:
+  - name: main-pod
+    containers:
+      - name: main
+        image: main
+        args: [localhost:9000]
+    portals:
+      outlets:
+        - to: localhost:9000
+```
+
+
 ```python images/main/Dockerfile
 FROM ghcr.io/build-trust/ockam-python:latest
 COPY . .
@@ -99,27 +121,6 @@ async def main(node):
 
 
 Node.start(main)
-```
-
-The `ockam.yaml` configuration file defines how to deploy your agent:
-
-- Creates a zone named `hello`
-- Creates a pod named `main-pod`
-- Runs a container using the `main` image (built from your Python code)
-- Sets up a portal outlet that will allow other nodes to communicate on port
-  `9000`
-
-```yaml ockam.yaml
-name: hello
-pods:
-  - name: main-pod
-    containers:
-      - name: main
-        image: main
-        args: [localhost:9000]
-    portals:
-      outlets:
-        - to: localhost:9000
 ```
 
 When you run `ockam`, it:
