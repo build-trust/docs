@@ -9,24 +9,25 @@ icon: "rabbit"
     [Sign up](https://ockam.io/signup) for an account with Ockam AI to create your new Cluster.
   </Step>
   <Step title="Install">
-    Install the `ockam` command by running the following in your terminal.
+    Install `ockam` command by running the following in your terminal.
 
     ```bash
     curl -sSfL install.command.ockam.io | bash && source "$HOME/.ockam/env"
     ```
   </Step>
   <Step title="Deploy your first agent">
-    After that, run the `ockam` command to enroll your workstation as an administrator of your newly created Ockam AI Cluster.
+    After that, create an empty directory and run `ockam` command to enroll your workstation as an administrator of your newly created Cluster in Ockam AI.
 
     ```bash
-    ockam
+    mkdir hello && cd hello && ockam
     ```
 
     This will generate an Ockam Identity for your workstation and store its secret keys in a file system based Ockam Vault. It will then ask you to authenticate with Ockam Orchestrator to make your workstation’s new Ockam Identity an administrator of your Cluster.
 
+    ![Agent](/images/agent.svg)
+    
     Finally, the above command will download the code for a template `hello` app and create a production-ready deployment zone on our serverless runtime. Withing seconds, it will the put your first AI Agent into production and you can immediately start interacting with it.
 
-    ![Agent](/images/agent.svg)
   </Step>
   <Step title="Chat with your agent">
     The `hello` app includes an interactive [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) for interacting with your agent:
@@ -56,15 +57,6 @@ icon: "rabbit"
   </Step>
 </Steps>
 
-## The generated code
-
-Within the `hello` directory, `ockam` has created a new project with several files:
-
-- An `ockam.yaml` configuration file that defines how your Zone should be deployed
-- An `images` directory that contains the source code of docker images:
-  - `main.py` - The Python code that powers your agent
-  - `Dockerfile` - Instructions for building the agent's container
-
 ```bash Generated Files
 » tree
 
@@ -74,6 +66,13 @@ Within the `hello` directory, `ockam` has created a new project with several fil
         ├── Dockerfile
         └── main.py
 ```
+
+Within the `hello` directory, `ockam` has created a new project with several files:
+
+- An `ockam.yaml` configuration file that defines how your Zone should be deployed
+- An `images` directory that contains the source code of docker images:
+  - `main.py` - The Python code that powers your agent
+  - `Dockerfile` - Instructions for building the agent's container
 
 Let's examine these files:
 
