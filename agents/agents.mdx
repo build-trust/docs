@@ -52,9 +52,22 @@ Node.start(main)
     Press Ctrl+C to stop all portals and exit
 ```
 
-```
+<CodeGroup>
+
+```bash httpie
 http GET \
 	https://25df35de87aa441b88f22a6c2a830a17-example001.ai.ockam.network/agents
+```
+
+
+```bash curl
+curl --request GET \
+	"https://25df35de87aa441b88f22a6c2a830a17-example001.ai.ockam.network/agents"
+```
+
+</CodeGroup>
+
+```
 ```
 
 ```
@@ -66,5 +79,17 @@ http POST \
 ```
 http POST \
 	'https://25df35de87aa441b88f22a6c2a830a17-hello.ai.ockam.network/agents/henry?stream=true' \
-	message="what is a patent"
+	message="who are you"
+```
+
+```
+curl --request POST --header "Content-Type: application/json" \
+    "https://25df35de87aa441b88f22a6c2a830a17-example001.ai.ockam.network/agents/henry" \
+    --data '{"message":"what is a patent"}'
+```
+
+```bash
+curl --request POST --header "Content-Type: application/json" \
+    "https://25df35de87aa441b88f22a6c2a830a17-example001.ai.ockam.network/agents/henry?stream=true" \
+    --data '{"message":"what is a patent"}'
 ```
