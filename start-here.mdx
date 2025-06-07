@@ -16,8 +16,9 @@ icon: "rabbit"
     ```
   </Step>
   <Step title="Deploy your first agent">
-    <Note>Ensure you have [Docker](https://www.docker.com/get-started/) installed and running on your workstation before running the `ockam` command.</Note>
-    
+    <Note>
+      Ensure you have [Docker](https://www.docker.com/get-started/) installed and running on your workstation before running the `ockam` command.
+    </Note>
     After that, create an empty directory and run `ockam` command to enroll your workstation as an administrator of your newly created Cluster in Ockam AI.
 
     ```bash
@@ -27,9 +28,8 @@ icon: "rabbit"
     This will generate an Ockam Identity for your workstation and store its secret keys in a file system based Ockam Vault. It will then ask you to authenticate with Ockam Orchestrator to make your workstation’s new Ockam Identity an administrator of your Cluster.
 
     ![Agent](/images/agent.svg)
-    
-    Finally, the above command will download the code for a template `hello` app and create a production-ready deployment Zone in your Cluster on our serverless Runtime. Withing seconds, it will put your first AI Agent into production and you can immediately start interacting with it.
 
+    Finally, the above command will download the code for a template `hello` app and create a production-ready deployment Zone in your Cluster on our serverless Runtime. Withing seconds, it will put your first AI Agent into production and you can immediately start interacting with it.
   </Step>
   <Step title="Chat with your agent">
     The `hello` app includes an interactive [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) for interacting with your agent:
@@ -58,8 +58,6 @@ icon: "rabbit"
     ```
   </Step>
 </Steps>
-
-
 
 ```bash Generated Files
 » tree
@@ -101,8 +99,7 @@ pods:
         - to: localhost:9000
 ```
 
-
-```python images/main/Dockerfile
+```bash images/main/Dockerfile
 FROM ghcr.io/build-trust/ockam-python:latest
 COPY . .
 ENTRYPOINT ["python", "main.py"]
