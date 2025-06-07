@@ -23,10 +23,9 @@
           "agents/agents",
           "agents/models",
           "agents/memory",
-          "agents/tools",
-          "agents/planning",
           "agents/knowledge",
-          "agents/storage"
+          "agents/tools",
+          "agents/planning"
         ]
       },
       {
@@ -44,33 +43,6 @@
         "pages": [
           "integration/portals",
           "integration/mcp"
-        ]
-      },
-      {
-        "group": "RUNTIME",
-        "pages": [
-          "runtime/nodes",
-          "runtime/workers",
-          "runtime/zones",
-          "runtime/clusters"
-        ]
-      },
-      {
-        "group": "OPERARATION",
-        "pages": [
-          "operation/evals",
-          "operation/observability"
-        ]
-      },
-      {
-        "group": "TRUST",
-        "pages": [
-          "trust/enrollment-tickets",
-          "trust/cryptographic-identities",
-          "trust/attribute-credentials",
-          "trust/end-to-end-encryption",
-          "trust/mutual-authentication",
-          "trust/access-control"
         ]
       }
     ]
