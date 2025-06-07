@@ -32,10 +32,8 @@
         "group": "COLLABORATION",
         "pages": [
           "collaboration/messages",
-          "collaboration/squads",
           "collaboration/flows",
-          "collaboration/gaurds",
-          "collaboration/patterns"
+          "collaboration/squads"
         ]
       },
       {
