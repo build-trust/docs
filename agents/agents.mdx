@@ -31,3 +31,23 @@ async def main(node):
 
 Node.start(main)
 ```
+
+``` [expandable]
+» ockam
+    Deploying zone example001 in cluster 25df35de87aa441b88f22a6c2a830a17...
+
+  ✔ Created a repository for the image main
+  ✔ Built image main
+  ✔ Pushed image main
+
+  ✔ Deployed zone example001 in cluster 25df35de87aa441b88f22a6c2a830a17
+
+    The http server on the main-pod is available at:
+    https://25df35de87aa441b88f22a6c2a830a17-example001.ai.ockam.network
+
+  ✔ Opened a portal to the outlet http on main-pod from tcp://localhost:8000
+  ✔ Opened a portal to the outlet logs on logs-pod from tcp://localhost:3000
+
+    ────────────────────────────────────────────────────────────────────────────────
+    Press Ctrl+C to stop all portals and exit
+```
