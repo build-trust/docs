@@ -15,7 +15,7 @@ pods:
         image: main
 ```
 
-``` images/main/Dockerfile
+```images/main/Dockerfile images/main/Dockerfile
 FROM ghcr.io/build-trust/ockam-python:latest
 COPY . .
 ENTRYPOINT ["python", "main.py"]
