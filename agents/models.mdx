@@ -11,18 +11,16 @@ The core of any agent is its model. Models are AI systems that transform input d
 If no model is explicitly defined an agent will default to using the `llama3.2` model. You can specify any model you prefer by passing the `model` argument to `Agent.start()`:
 
 ```python images/main/main.py
-from ockam import Agent, Model, Node, Repl
-from sys import argv
+from ockam import Agent, Model, Node
 
 
 async def main(node):
-    agent = await Agent.start(
+    await Agent.start(
         node=node,
+        name="henry",
         instructions="You are Henry, an expert legal assistant",
         model=Model("claude-3-7-sonnet-v1"),
     )
-
-    await Repl.start(agent, argv[1])
 
 
 Node.start(main)
@@ -31,18 +29,16 @@ Node.start(main)
 The code above changes the agent to use the `claude-3-7-sonnet-v1` model. To use `deepseek-r1` change the model to:
 
 ```python images/main/main.py
-from ockam import Agent, Model, Node, Repl
-from sys import argv
+from ockam import Agent, Model, Node
 
 
 async def main(node):
-    agent = await Agent.start(
+    await Agent.start(
         node=node,
+        name="henry",
         instructions="You are Henry, an expert legal assistant",
         model=Model("deepseek-r1"),
     )
-
-    await Repl.start(agent, argv[1])
 
 
 Node.start(main)
@@ -50,25 +46,14 @@ Node.start(main)
 
 The complete list of currently supported models is:
 
-* `claude-3-5-haiku-v1`
-* `claude-3-5-sonnet-v1`
-* `claude-3-5-sonnet-v2`
-* `claude-3-7-sonnet-v1`
-* `deepseek-r1`
-* `embed-english-v3`
-* `embed-multilingual-v3`
-* `gemma3`
-* `gemma3:27b`
-* `llama3.2`
-* `llama3.3`
-* `nomic-embed-text`
-* `nova-lite-v1`
-* `nova-micro-v1`
-* `nova-pro-v1`
-* `titan-embed-image-v1`
-* `titan-embed-text-v1`
-* `titan-embed-text-v2`
-* `titan-text-express-v1`
-* `titan-text-lite-v1`
-* `llama3.1-8b-instruct`
-* `deepseek-r1`
+- `claude-3-5-haiku-v1`
+- `claude-3-5-sonnet-v1`
+- `claude-3-5-sonnet-v2`
+- `claude-3-7-sonnet-v1`
+- `deepseek-r1`
+- `llama3.1-8b-instruct`
+- `llama3.2`
+- `llama3.3`
+- `nova-lite-v1`
+- `nova-micro-v1`
+- `nova-pro-v1`
