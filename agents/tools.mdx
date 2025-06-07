@@ -8,7 +8,7 @@ description: "Agents can invoke tools in Python or via MCP"
 ### Python Functions as Tools
 
 <Tip>
-  You can find all the code for this example [on Github](https://github.com/build-trust/ockam/tree/develop/examples/006).
+You can find all the code for this example [on Github](https://github.com/build-trust/ockam/tree/develop/examples/006).
 </Tip>
 
 ```python images/main/main.py
@@ -40,15 +40,15 @@ Node.start(main)
 
 ```bash httpie
 http POST \
-  "https://25df35de87aa441b88f22a6c2a830a17-example006.ai.ockam.network/agents/henry" \
-  message="what is the current time"
+"https://25df35de87aa441b88f22a6c2a830a17-example006.ai.ockam.network/agents/henry" \
+message="what is the current time"
 ```
 
 ```bash curl
 curl --request POST \
-  --header "Content-Type: application/json" \
-  --data '{ "message": "What is the current time?" }' \
-  "https://25df35de87aa441b88f22a6c2a830a17-example006.ai.ockam.network/agents/henry"
+--header "Content-Type: application/json" \
+--data '{ "message": "What is the current time?" }' \
+"https://25df35de87aa441b88f22a6c2a830a17-example006.ai.ockam.network/agents/henry"
 ```
 </CodeGroup>
 
@@ -57,7 +57,7 @@ curl --request POST \
 ### Tools provided by MCP Servers
 
 <Tip>
-  You can find all the code for this example [on Github](https://github.com/build-trust/ockam/tree/develop/examples/007).
+You can find all the code for this example [on Github](https://github.com/build-trust/ockam/tree/develop/examples/007).
 </Tip>
 
 ```yaml ockam.yaml
@@ -136,14 +136,14 @@ Node.start(
 
 ```bash httpie
 http POST \
-  "https://25df35de87aa441b88f22a6c2a830a17-example006.ai.ockam.network/agents/henry" \
-  message="Find links to cases currently in the US Supreme Court"
+"https://25df35de87aa441b88f22a6c2a830a17-example006.ai.ockam.network/agents/henry" \
+message="Find links to cases currently in the US Supreme Court"
 ```
 
 ```bash curl
 curl --request POST \
-  --header "Content-Type: application/json" \
-  --data '{ "message": "Find links to cases currently in the US Supreme Court" }' \
-  "https://25df35de87aa441b88f22a6c2a830a17-example006.ai.ockam.network/agents/henry"
+--header "Content-Type: application/json" \
+--data '{ "message": "Find links to cases currently in the US Supreme Court" }' \
+"https://25df35de87aa441b88f22a6c2a830a17-example006.ai.ockam.network/agents/henry"
 ```
 </CodeGroup>
