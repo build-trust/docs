@@ -27,6 +27,7 @@ pods:
       - name: main
         image: main
 ```
+
 The `ockam.yaml` file above defines:
 
 - `name: example001` - A unique name for this deployment zone
@@ -34,14 +35,14 @@ The `ockam.yaml` file above defines:
   - `name: main-pod` - The name of the pod
   - `public: true` - Makes the pod accessible from the internet
   - `containers` - The containers to run in the pod
-    - `name: main` - Container name 
+    - `name: main` - Container name
     - `image: main` - References the image built from the `Dockerfile` located at `images/<value>/Dockerfile`
 
 This minimal configuration creates a deployment that runs our agent code.
 
 Next is the `Dockerfile` file:
 
-```dockerfile images/main/Dockerfile
+```bash images/main/Dockerfile
 FROM ghcr.io/build-trust/ockam-python:latest
 COPY . .
 ENTRYPOINT ["python", "main.py"]
@@ -72,7 +73,9 @@ The `main.py` file above:
 - Defines an async main function that starts an agent with a specific prompt
 - Starts the node and agent
 
-<Note>Ensure you have [Docker](https://www.docker.com/get-started/) installed and running on your workstation before running the `ockam` command.</Note>
+<Note>
+  Ensure you have [Docker](https://www.docker.com/get-started/) installed and running on your workstation before running the `ockam` command.
+</Note>
 
 When you run `ockam` it will:
 
@@ -111,9 +114,8 @@ You can see the logs of your running python app on `http://localhost:3000/logs/e
 
 ```bash httpie
 http GET \
-"https://25df35de87aa441b88f22a6c2a830a17-example001.ai.ockam.network/agents"
+  "https://25df35de87aa441b88f22a6c2a830a17-example001.ai.ockam.network/agents"
 ```
-
 
 ```bash curl
 curl --request GET \
@@ -129,7 +131,6 @@ http POST \
   "https://25df35de87aa441b88f22a6c2a830a17-example001.ai.ockam.network/agents/henry" \
   message="who are you"
 ```
-
 
 ```bash curl
 curl --request POST \
@@ -147,7 +148,6 @@ http POST \
   "https://25df35de87aa441b88f22a6c2a830a17-hello.ai.ockam.network/agents/henry?stream=true" \
   message="who are you"
 ```
-
 
 ```bash curl
 curl --request POST \
