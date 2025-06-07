@@ -61,8 +61,7 @@ http GET \
 
 
 ```bash curl
-curl \
-  --request GET \
+curl --request GET \
   "https://25df35de87aa441b88f22a6c2a830a17-example001.ai.ockam.network/agents"
 ```
 
@@ -78,8 +77,7 @@ http POST \
 
 
 ```bash curl
-curl \
-  --request POST \
+curl --request POST \
   --header "Content-Type: application/json" \
   --data '{"message":"who are you"}' \
   "https://25df35de87aa441b88f22a6c2a830a17-example001.ai.ockam.network/agents/henry"
@@ -97,8 +95,7 @@ http POST \
 
 
 ```bash curl
-curl \
-  --request POST \
+curl --request POST \
   --header "Content-Type: application/json" \
   --data '{"message": "what is a patent"}' \
   "https://25df35de87aa441b88f22a6c2a830a17-example001.ai.ockam.network/agents/henry?stream=true"
