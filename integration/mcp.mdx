@@ -3,6 +3,9 @@ title: "MCP"
 icon: "link-horizontal"
 mode: "wide"
 ---
+<Tip>
+You can find all the code for this example [on Github](https://github.com/build-trust/ockam/tree/develop/examples/007).
+</Tip>
 
 ```yaml ockam.yaml
 name: example007
@@ -32,15 +35,15 @@ pods:
     key: "YOUR KEY HERE"
 ```
 
-```images/main/Dockerfile
+```bash images/main/Dockerfile
 FROM ghcr.io/build-trust/ockam-python:latest
 COPY . .
 ENTRYPOINT ["python", "main.py"]
 ```
 
 ```python images/main/main.py
-from datetime import datetime
 from ockam import Agent, Model, Node, McpTool, McpClient, Tool
+from datetime import datetime
 
 
 def current_iso8601_utc_time():
@@ -75,3 +78,19 @@ Node.start(
     ],
 )
 ```
+
+<CodeGroup>
+
+```bash httpie
+http POST \
+"https://25df35de87aa441b88f22a6c2a830a17-example006.ai.ockam.network/agents/henry" \
+message="Find links to cases currently in the US Supreme Court"
+```
+
+```bash curl
+curl --request POST \
+--header "Content-Type: application/json" \
+--data '{ "message": "Find links to cases currently in the US Supreme Court" }' \
+"https://25df35de87aa441b88f22a6c2a830a17-example006.ai.ockam.network/agents/henry"
+```
+</CodeGroup>
