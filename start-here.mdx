@@ -34,13 +34,13 @@ icon: "rabbit"
     ```
     Welcome to Ockam 👋
     
-    You are connected to your agent - 782844ce-hello-main/545107ca
+    You are connected to your agent - 25df35de87aa441b-hello-main-pod-main/66a48b60
     Ask it a question or give it a task.
     
     Type ':help' or ':h' to see this message again.
     Type ':quit' or ':q' to disconnect.
     
-    > 
+    >
     ```
 
     This agent runs on Ockam's serverless runtime.
@@ -77,6 +77,12 @@ Within the `hello` directory, `ockam` has created a new project with several fil
 
 Let's examine these files:
 
+```python images/main/Dockerfile
+FROM ghcr.io/build-trust/ockam-python:latest
+COPY . .
+ENTRYPOINT ["python", "main.py"]
+```
+
 The `main.py` file contains the core logic for your agent. It uses Ockam's Python SDK to:
 
 1. Create a node that can communicate using Ockam's messaging protocols
@@ -84,16 +90,16 @@ The `main.py` file contains the core logic for your agent. It uses Ockam's Pytho
 3. Launch a REPL (interactive shell) that connects to this agent
 
 ```python images/main/main.py
-from ockam import Agent, Node, Repl
-from sys import argv
-
-
-async def main(node):
-    agent = await Agent.start(node, "You are Jack Sparrow.")
-    await Repl.start(agent, argv[1])
-
-
-Node.start(main)
+name: hello
+pods:
+  - name: main-pod
+    containers:
+      - name: main
+        image: main
+        args: [localhost:9000]
+    portals:
+      outlets:
+        - to: localhost:9000
 ```
 
 The `ockam.yaml` configuration file defines how to deploy your agent:
@@ -105,16 +111,16 @@ The `ockam.yaml` configuration file defines how to deploy your agent:
   `9000`
 
 ```yaml ockam.yaml
-name: hello
-pods:
-  - name: main-pod
-    containers:
-      - name: main
-        image: main
-        args: [localhost:9000]
-    portals:
-      outlets:
-        - to: localhost:9000
+from ockam import Agent, Node, Repl
+from sys import argv
+
+
+async def main(node):
+    agent = await Agent.start(node, "You are Jack Sparrow.")
+    await Repl.start(agent, argv[1])
+
+
+Node.start(main)
 ```
 
 When you run `ockam`, it:
