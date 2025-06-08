@@ -31,6 +31,7 @@ so far, savvy?
 
 ## Isolating conversations
 
+You can have multiple separate conversations with an agent at the same time by using a different `conversation` identifier for each one:
 
 <CodeGroup>
 ```python Ockam SDK
@@ -54,10 +55,11 @@ curl --request POST \
 
 ## Isolating conversations per user
 
+You can add an extra layer of isolation by using a unique `scope` identifier (like a customer ID) when conversation-level isolation alone doesn't meet your needs in multi-user environments:
 
 <CodeGroup>
 
-```python
+```python Ockam SDK
 await agent.send("What is 56 divided by 27?", scope="user-1", conversation="1")
 ```
   
