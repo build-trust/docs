@@ -75,14 +75,13 @@ Within the `hello` directory, `ockam` has created a new project with the followi
 
 Within the `hello` directory, `ockam` has created a new project with the following files:
 
-- An `ockam.yaml` configuration file that defines how your Zone should be deployed.
-- An `images` directory that contains the source code of docker images:
-  - `main.py` - The Python code that powers your agent
-  - `Dockerfile` - Instructions for building the agent's container
+- The `ockam.yaml` configuration file defines how to deploy your Zone.
+- The `images` directory contains the source code of docker images.
+  - Inside it, there is a directory for the `main` image.
+    - `Dockerfile` describe how the main image will be compiled.
+    - `main.py` is the Python program that is run by the main image. 
 
 Let's examine these files:
-
-The `ockam.yaml` configuration file defines how to deploy your agent:
 
 ```yaml ockam.yaml
 name: hello
@@ -96,6 +95,8 @@ pods:
       outlets:
         - to: localhost:9000
 ```
+
+The `ockam.yaml` configuration file defines how to deploy your agent:
 
 - Creates a zone named `hello`
 - Creates a pod named `main-pod`
