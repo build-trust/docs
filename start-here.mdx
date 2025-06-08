@@ -75,13 +75,13 @@ Within the `hello` directory, `ockam` has created a new project with the followi
 
 Within the `hello` directory, `ockam` has created a new project with the following files:
 
-- The `ockam.yaml` configuration file defines how to deploy your Zone.
+- The `ockam.yaml` configuration file defines how to deploy your zone.
 - The `images` directory contains the source code of docker images.
   - Inside it, there is a directory for the `main` image.
     - `Dockerfile` describe how the main image will be compiled.
-    - `main.py` is the Python program that is run by the main image. 
+    - `main.py` is the Python program that is run by the main image.
 
-Let's examine these files:
+Let's examine each file:
 
 ```yaml ockam.yaml
 name: hello
@@ -98,10 +98,10 @@ pods:
 
 The `ockam.yaml` configuration file defines how to deploy your agent:
 
-- Creates a zone named `hello`
-- Creates a pod named `main-pod`
-- Runs a container using the `main` image (built from your Python code)
-- Sets up a portal outlet that will allow other nodes to communicate on port `9000`
+- Create a zone named `hello` .
+- Create a pod named `main-pod`inside the `hello` zone.
+- Run a `main` container using the `main` image.
+- Set up a portal outlet that will allow other nodes to reach `localhost:9000` in this pod.
 
 ```bash images/main/Dockerfile
 FROM ghcr.io/build-trust/ockam-python:latest
@@ -109,11 +109,7 @@ COPY . .
 ENTRYPOINT ["python", "main.py"]
 ```
 
-The `main.py` file contains the core logic for your agent. It uses Ockam's Python SDK to:
-
-1. Create a node that can communicate using Ockam's messaging protocols
-2. Start an agent with a specific prompt ("You are Jack Sparrow")
-3. Launch a REPL (interactive shell) that connects to this agent
+The `Dockerfile` bases the `main` image on the `ockam-python` image with already contains the `ockam` python package. The `Dockerfile` then copies the contents of the `images/main` directory into the image and runs the `main.py` python program.
 
 ```python images/main/main.py
 from ockam import Agent, Node, Repl
@@ -128,9 +124,30 @@ async def main(node):
 Node.start(main)
 ```
 
+`main.py` file contains the core logic for your app. It uses the `ockam` python package to:
+
+1. Start a Node that will invoke the `main` function after initialization.
+2. The main function start an agent on that node with a specific prompt ("You are Jack Sparrow").
+3. It then starts a REPL (interactive shell) server that for that agent.
+
+``` Output
+    Deploying zone hello in cluster 25df35de87aa441b88f22a6c2a830a17...
+
+  ✔ Created a repository for the image main
+  ✔ Built image main
+  ✔ Pushed image main
+
+  ✔ Deployed zone hello in cluster 25df35de87aa441b88f22a6c2a830a17
+
+
+  ✔ Opened a portal to the outlet main-pod on main-pod from tcp://localhost:9000
+  ✔ Opened a portal to the outlet http on main-pod from tcp://localhost:8000
+  ✔ Opened a portal to the outlet logs on logs-pod from tcp://localhost:3000
+```
+
 When you run `ockam`, it:
 
-1. Builds your Python code into a container image
-2. Deploys the container according to the `ockam.yaml` configuration
-3. Opens a portal inlet on your local workstation that connects to the outlet on the agent's container
-4. Connects to the agent's REPL over the secure portal
+1. Builds the code in `images/main` into a container image and pushes that image to your Zone.
+2. Deploys the Zone into your Cluster based on the configuration in `ockam.yaml` .
+3. Opens a portal inlet on your local workstation that connects to the outlet in the `main-pod` .
+4. Connects to the agent's REPL over this private and secure portal.
