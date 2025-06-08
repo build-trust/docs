@@ -1,10 +1,10 @@
 ---
 title: "Agents"
 icon: "star-shooting"
-description: "Intelligent autonomous actors powered by large language models."
+description: "Ockam Agents are intelligent autonomous actors powered by large language models."
 ---
 
-Ockam Agents are intelligent autonomous actors that accomplish complex open ended tasks.
+Python apps running in Ockam AI can create millions of collaborating Agents. Ockam Agents are autonomous actors that accomplish complex open ended tasks.
 
 Each Agent:
 
@@ -16,7 +16,20 @@ Each Agent:
 - Can invoke tools to access information and take actions.
 - Can collaborate with and delegate work to other agents using messages.
 
-Python apps running in Ockam AI can create millions of collaborating Agents.
+<RequestExample>
+
+```python images/main/main.py
+from ockam import Agent, Node
+
+
+async def main(node):
+    await Agent.start(node, "You are Henry, an expert legal assistant", "henry")
+
+
+Node.start(main)
+```
+
+</RequestExample>
 
 <Tip>
   You can find all the code for this example [on Github](https://github.com/build-trust/ockam/tree/develop/examples/001).
