@@ -59,6 +59,10 @@ icon: "rabbit"
   </Step>
 </Steps>
 
+### The generated code
+
+Within the `hello` directory, `ockam` has created a new project with the following files:
+
 ```bash Generated Files
 » tree
 
@@ -69,9 +73,9 @@ icon: "rabbit"
         └── main.py
 ```
 
-Within the `hello` directory, `ockam` has created a new project with several files:
+Within the `hello` directory, `ockam` has created a new project with the following files:
 
-- An `ockam.yaml` configuration file that defines how your Zone should be deployed
+- An `ockam.yaml` configuration file that defines how your Zone should be deployed.
 - An `images` directory that contains the source code of docker images:
   - `main.py` - The Python code that powers your agent
   - `Dockerfile` - Instructions for building the agent's container
@@ -79,12 +83,6 @@ Within the `hello` directory, `ockam` has created a new project with several fil
 Let's examine these files:
 
 The `ockam.yaml` configuration file defines how to deploy your agent:
-
-- Creates a zone named `hello`
-- Creates a pod named `main-pod`
-- Runs a container using the `main` image (built from your Python code)
-- Sets up a portal outlet that will allow other nodes to communicate on port
-  `9000`
 
 ```yaml ockam.yaml
 name: hello
@@ -99,13 +97,12 @@ pods:
         - to: localhost:9000
 ```
 
-The `Dockerfile` configures the image that is used by the the pods that run your agents. The one below:
+- Creates a zone named `hello`
+- Creates a pod named `main-pod`
+- Runs a container using the `main` image (built from your Python code)
+- Sets up a portal outlet that will allow other nodes to communicate on port `9000`
 
-* Uses the official Ockam Python base image which includes the Ockam SDK
-* Copies the agent code (main.py and other files) into the container
-* Sets the entrypoint to run main.py when the container starts
-
-```dockerfile images/main/Dockerfile
+```bash images/main/Dockerfile
 FROM ghcr.io/build-trust/ockam-python:latest
 COPY . .
 ENTRYPOINT ["python", "main.py"]
