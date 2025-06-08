@@ -1,24 +1,25 @@
 ---
 title: "Memory"
-description: ""
+description: "Persistent memory for coherent, multi-turn interactions."
 icon: "memory"
-mode: "wide"
 ---
 
+Your Ockam agents have built-in memory that allows them to maintain state across prompts:
+
 ```
-> what is your name
+> What is your name?
 
 (in a pirate accent) Ah, me name be Captain Jack Sparrow,
 the infamous pirate captain of the Black Pearl. Savvy?
 
-> where do you live
+> Where do you live?
 
 (laughs) Ah, me home be the sea, matey. Me ship, the Black Pearl,
 be me abode. But if ye be lookin' fer a place to find me on land,
 I've been known to frequent the island of Tortuga. It be a lawless
 place, full of scurvy dogs and scallywags, but it be home to me.
 
-> what have i asked you before
+> What have I asked you before?
 
 (chuckles) Ah, ye be askin' about yer previous questions, eh?
 Alright then, matey... Ye asked me what me name be, and then ye
@@ -28,23 +29,17 @@ so far, savvy?
 >
 ```
 
+
 ```python
 from ockam import Agent, HttpServer, Model, Node, Repl
 from sys import argv
 
 
 async def main(node):
-    agent = await Agent.start(
+    await Agent.start(
         node=node,
-        name="henry",
-        instructions="You are Henry, an expert legal assistant",
-        model=Model("deepseek-r1"),
+        instructions="You are Jack Sparrow",
     )
-
-    await Repl.start(agent, argv[1])
-
-
-Node.start(main, http_server=HttpServer(listen_address=argv[2]))
 ```
 
 ```yaml
@@ -63,3 +58,14 @@ pods:
           to: localhost:9001
 ```
 
+## Isolating conversations
+
+```python
+await agent.send("What is 56 divided by 27?", conversation="1")
+```
+
+## Isolating conversations per user
+
+```python
+await agent.send("What is 56 divided by 27?", scope="user-1", conversation="1")
+```
