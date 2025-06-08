@@ -114,7 +114,12 @@ By default the pod will expose a HTTP interface with a few endpoints interact wi
 
 #### List agents
 
+The public URL for the HTTP server on your pod (each pod will have its own unique URL) is displayed in the example output above:
 
+>    The http server on the main-pod is available at:
+>    https://25df35de87aa441b88f22a6c2a830a17-01.ai.ockam.network
+
+To return a list of all agents running on that pod send a `GET` request to the `/agents` endpoint:
 
 <CodeGroup>
 
@@ -145,7 +150,7 @@ curl --request GET \
 
 #### Send prompt to agent
 
-
+To interact with a specific agent, send a `POST` request to the `/agents/<name>` endpoint:
 
 <CodeGroup>
 
@@ -177,11 +182,13 @@ curl --request POST \
 
 #### Send prompt to agent (+ stream response)
 
+For some use cases, especially user-facing ones with potentially long responses, it may be preferable to stream the response. Passing a `stream=true` parameter to the `/agents/<name>` endpoint will stream chunked responses from the agent in real-time:
+
 <CodeGroup>
 
 ```bash httpie
 http POST \
-"https://25df35de87aa441b88f22a6c2a830a17-01.ai.ockam.network/agents/henry?stream=true" \
+"https://25df35de87aa441b88f22a6c2a830a17-01.ai.ockam.network/agents/ef48fd1c0b8f342ef12bf679?stream=true" \
 message="what is a patent"
 ```
 
@@ -189,7 +196,7 @@ message="what is a patent"
 curl --request POST \
 --header "Content-Type: application/json" \
 --data '{"message": "what is a patent"}' \
-"https://25df35de87aa441b88f22a6c2a830a17-01.ai.ockam.network/agents/henry?stream=true"
+"https://25df35de87aa441b88f22a6c2a830a17-01.ai.ockam.network/agents/ef48fd1c0b8f342ef12bf679?stream=true"
 ```
 </CodeGroup>
 
