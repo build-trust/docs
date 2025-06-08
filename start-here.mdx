@@ -99,7 +99,13 @@ pods:
         - to: localhost:9000
 ```
 
-```bash images/main/Dockerfile
+The `Dockerfile` configures the image that is used by the the pods that run your agents. The one below:
+
+* Uses the official Ockam Python base image which includes the Ockam SDK
+* Copies the agent code (main.py and other files) into the container
+* Sets the entrypoint to run main.py when the container starts
+
+```dockerfile images/main/Dockerfile
 FROM ghcr.io/build-trust/ockam-python:latest
 COPY . .
 ENTRYPOINT ["python", "main.py"]

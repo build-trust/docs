@@ -110,6 +110,12 @@ You can see the logs of your running python app on `http://localhost:3000/logs/e
 
 ### HTTP Server
 
+By default the pod will expose a HTTP interface with a few endpoints interact with the deployed agents.
+
+#### List agents
+
+
+
 <CodeGroup>
 
 ```bash httpie
@@ -124,22 +130,52 @@ curl --request GET \
 
 </CodeGroup>
 
+```json response
+{
+    "agents": [
+        {
+            "description": [],
+            "is_remote": false,
+            "name": "ef48fd1c0b8f342ef12bf679",
+            "workers": []
+        }
+    ]
+}
+```
+
+#### Send prompt to agent
+
+
+
 <CodeGroup>
 
 ```bash httpie
 http POST \
-"https://25df35de87aa441b88f22a6c2a830a17-01.ai.ockam.network/agents/henry" \
-message="who are you"
+  "https://25df35de87aa441b88f22a6c2a830a17-example001.ai.ockam.network/agents/ef48fd1c0b8f342ef12bf679" \
+  message="who are you"
 ```
 
 ```bash curl
 curl --request POST \
---header "Content-Type: application/json" \
---data '{"message":"who are you"}' \
-"https://25df35de87aa441b88f22a6c2a830a17-01.ai.ockam.network/agents/henry"
+  --header "Content-Type: application/json" \
+  --data '{"message":"who are you"}' \
+  "https://25df35de87aa441b88f22a6c2a830a17-example001.ai.ockam.network/agents/ef48fd1c0b8f342ef12bf679"
 ```
 
 </CodeGroup>
+
+```json response
+
+[
+    {
+        "content": "(in a pirate accent) Ah, I be Captain Jack Sparrow, the infamous pirate of the Seven Seas. Me reputation precedes me, savvy? I be the master of me own ship, the Black Pearl, the fastest vessel to ever sail the Caribbean. Me cunning and me wit be me greatest treasures, and me ability to talk me way out o' trouble be me most prized possession.\n\nI've had me share o' adventures, battled the Royal Navy, and outwitted the scurvy dog, Captain Barbossa. Me exploits be the stuff o' legend, and me name be whispered in fear and awe by all who sail the seas.\n\nSo, what be bringin' ye to these waters? Are ye lookin' to join me crew, or are ye just lookin' to get yerself into a bit o' trouble? Either way, I be happy to oblige, matey.",
+        "role": "assistant",
+        "tool_calls": []
+    }
+]
+```
+
+#### Send prompt to agent (+ stream response)
 
 <CodeGroup>
 
@@ -155,5 +191,23 @@ curl --request POST \
 --data '{"message": "what is a patent"}' \
 "https://25df35de87aa441b88f22a6c2a830a17-01.ai.ockam.network/agents/henry?stream=true"
 ```
-
 </CodeGroup>
+
+```json response
+
+{"scope": "None", "conversation": "None", "messages": [{"content": "(smirking) Ah, ye want to know who I be again, eh? Alright", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
+{"scope": "None", "conversation": "None", "messages": [{"content": " then, matey. I be Captain Jack Sparrow, the one and", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
+{"scope": "None", "conversation": "None", "messages": [{"content": " only. Me life be a tale of piracy, adventure, and a", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
+{"scope": "None", "conversation": "None", "messages": [{"content": " wee bit o' luck. I've sailed the Seven Seas, discovered", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
+{"scope": "None", "conversation": "None", "messages": [{"content": " hidden treasure, and battled the scurviest of scound", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
+{"scope": "None", "conversation": "None", "messages": [{"content": "rels.\n\nMe skills be many: I be a master swordsman, a", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
+{"scope": "None", "conversation": "None", "messages": [{"content": " cunning strategist, and a charismatic negotiator. Me", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
+{"scope": "None", "conversation": "None", "messages": [{"content": " ship, the Black Pearl, be me pride and joy, and me", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
+{"scope": "None", "conversation": "None", "messages": [{"content": " loyal crew be me family.\n\nBut, I be more than just", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
+{"scope": "None", "conversation": "None", "messages": [{"content": " a pirate, matey. I be a free spirit, a rebel, and a", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
+{"scope": "None", "conversation": "None", "messages": [{"content": " trickster. I live by me own rules, and I never back", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
+{"scope": "None", "conversation": "None", "messages": [{"content": " down from a challenge. Me motto be \"Savvy?\" \u2013 and I", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
+{"scope": "None", "conversation": "None", "messages": [{"content": " always be lookin' for the next great adventure.\n\nSo", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
+{"scope": "None", "conversation": "None", "messages": [{"content": ", now ye know who I be. What be yer business with me", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
+{"scope": "None", "conversation": "None", "messages": [{"content": ", matey?", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
+```
