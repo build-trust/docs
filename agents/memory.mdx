@@ -29,43 +29,49 @@ so far, savvy?
 >
 ```
 
-
-```python
-from ockam import Agent, HttpServer, Model, Node, Repl
-from sys import argv
-
-
-async def main(node):
-    await Agent.start(
-        node=node,
-        instructions="You are Jack Sparrow",
-    )
-```
-
-```yaml
-name: example05
-pods:
-  - name: main-pod
-    containers:
-      - name: main
-        image: main
-        args: [localhost:9000, localhost:9001]
-    portals:
-      outlets:
-        - name: repl
-          to: localhost:9000
-        - name: http
-          to: localhost:9001
-```
-
 ## Isolating conversations
 
-```python
-await agent.send("What is 56 divided by 27?", conversation="1")
+
+<CodeGroup>
+```python Ockam SDK
+await agent.send("What have I asked you before?", conversation="1")
+```
+  
+```bash httpie
+http POST \
+  "https://25df35de87aa441b88f22a6c2a830a17-example001.ai.ockam.network/agents/ef48fd1c0b8f342ef12bf679" \
+  message="What have I asked you before" conversation=1
 ```
 
+
+```bash curl
+curl --request POST \
+  --header "Content-Type: application/json" \
+  --data '{"message":"What have I asked you before?", "conversation": "1"}' \
+  "https://25df35de87aa441b88f22a6c2a830a17-example001.ai.ockam.network/agents/ef48fd1c0b8f342ef12bf679"
+```
+</CodeGroup>
+
 ## Isolating conversations per user
+
+
+<CodeGroup>
 
 ```python
 await agent.send("What is 56 divided by 27?", scope="user-1", conversation="1")
 ```
+  
+```bash httpie
+http POST \
+  "https://25df35de87aa441b88f22a6c2a830a17-example001.ai.ockam.network/agents/ef48fd1c0b8f342ef12bf679" \
+  message="What have I asked you before" scope="user-1" conversation=1
+```
+
+
+```bash curl
+curl --request POST \
+  --header "Content-Type: application/json" \
+  --data '{"message":"What have I asked you before?", "scope": "user-1", "conversation": "1"}' \
+  "https://25df35de87aa441b88f22a6c2a830a17-example001.ai.ockam.network/agents/ef48fd1c0b8f342ef12bf679"
+```
+</CodeGroup>
