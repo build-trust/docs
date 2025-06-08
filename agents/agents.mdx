@@ -103,15 +103,15 @@ When you run `ockam` it will:
     Press Ctrl+C to stop all portals and exit
 ```
 
-### Logs
+## Logs
 
 You can see the logs of your running python app on `http://localhost:3000/logs/explorer` .
 
-### HTTP Server
+## HTTP Server
 
 By default the pod will expose a HTTP interface with a few endpoints interact with the deployed agents.
 
-#### List agents
+### List agents
 
 The public URL for the HTTP server on your pod (each pod will have its own unique URL) is displayed in the example output above:
 
@@ -148,7 +148,7 @@ curl --request GET \
 }
 ```
 
-#### Send prompt to agent
+### Send prompt to agent
 
 To interact with a specific agent, send a `POST` request to the `/agents/<name>` endpoint:
 
@@ -181,7 +181,7 @@ curl --request POST \
 ]
 ```
 
-#### Send prompt to agent (\+ stream response)
+### Send prompt to agent (\+ stream response)
 
 For some use cases, especially user-facing ones with potentially long responses, it may be preferable to stream the response. Passing a `stream=true` parameter to the `/agents/<name>` endpoint will stream chunked responses from the agent in real-time:
 
