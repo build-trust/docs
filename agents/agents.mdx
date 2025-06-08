@@ -23,7 +23,13 @@ from ockam import Agent, Node
 
 
 async def main(node):
-    await Agent.start(node, "You are Henry, an expert legal assistant", "henry")
+    await Agent.start(
+        node=node,
+        name="henry",
+        instructions="""
+            You are Henry, an expert legal assistant.
+        """
+    )
 
 
 Node.start(main)
