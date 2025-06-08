@@ -2,22 +2,22 @@
 title: "Agents"
 icon: "star-shooting"
 mode: "wide"
-description: "Intelligent autonomous actors"
+description: "Intelligent autonomous actors powered by large language models."
 ---
 
-Ockam Agents are intelligent autonomous actors that accomplish complex open ended tasks. Your Python apps running in Ockam AI can create millions of collaborating Agents.
+Ockam Agents are intelligent autonomous actors that accomplish complex open ended tasks.
 
 Each Agent:
 
 - Has a unique identity.
 - Uses a large language model to understand and reason in natual language.
-- Has memory of conversations with each user.
+- Has memory of conversations.
 - Can reason and plan to break down complex tasks.
 - Can store and retrieve information beyond the initial training data of its language model.
 - Can invoke tools to access information and take actions.
 - Can collaborate with and delegate work to other agents using messages.
 
-There are three key files that define an agent. First is the `ockam.yaml` file:
+Python apps running in Ockam AI can create millions of collaborating Agents.
 
 <Tip>
   You can find all the code for this example [on Github](https://github.com/build-trust/ockam/tree/develop/examples/001).
@@ -32,6 +32,8 @@ pods:
       - name: main
         image: main
 ```
+
+There are three key files that define an agent. First is the `ockam.yaml` file:
 
 The `ockam.yaml` file above defines:
 
