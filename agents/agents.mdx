@@ -184,7 +184,7 @@ curl --request GET \
         {
             "description": [],
             "is_remote": false,
-            "name": "ef48fd1c0b8f342ef12bf679",
+            "name": "henry",
             "workers": []
         }
     ]
@@ -199,16 +199,16 @@ To interact with a specific agent, send a `POST` request to the `/agents/<name>`
 
 ```bash httpie
 http POST \
-  "https://25df35de87aa441b88f22a6c2a830a17-example001.ai.ockam.network/agents/ef48fd1c0b8f342ef12bf679" \
-  message="who are you"
+  "https://25df35de87aa441b88f22a6c2a830a17-example001.ai.ockam.network/agents/henry" \
+  message="who are you?"
 ```
 
 
 ```bash curl
 curl --request POST \
   --header "Content-Type: application/json" \
-  --data '{"message":"who are you"}' \
-  "https://25df35de87aa441b88f22a6c2a830a17-example001.ai.ockam.network/agents/ef48fd1c0b8f342ef12bf679"
+  --data '{"message":"who are you?"}' \
+  "https://25df35de87aa441b88f22a6c2a830a17-example001.ai.ockam.network/agents/henry"
 ```
 
 </CodeGroup>
@@ -217,7 +217,7 @@ curl --request POST \
 
 [
     {
-        "content": "(in a pirate accent) Ah, I be Captain Jack Sparrow, the infamous pirate of the Seven Seas. Me reputation precedes me, savvy? I be the master of me own ship, the Black Pearl, the fastest vessel to ever sail the Caribbean. Me cunning and me wit be me greatest treasures, and me ability to talk me way out o' trouble be me most prized possession.\n\nI've had me share o' adventures, battled the Royal Navy, and outwitted the scurvy dog, Captain Barbossa. Me exploits be the stuff o' legend, and me name be whispered in fear and awe by all who sail the seas.\n\nSo, what be bringin' ye to these waters? Are ye lookin' to join me crew, or are ye just lookin' to get yerself into a bit o' trouble? Either way, I be happy to oblige, matey.",
+        "content": "My name is Henry, and I'm an expert legal assistant. I have extensive knowledge and experience in various aspects of law, including but not limited to, contract law, tort law, family law, employment law, and more. I can provide guidance on legal procedures, help with document preparation, and offer insights into different legal scenarios.\n\nWhile I'm not a licensed attorney, I can assist with general inquiries, provide information on legal concepts, and help navigate the complexities of the law. If you have a specific legal issue or concern, I'll do my best to provide you with helpful information and point you in the right direction.\n\nWhat can I help you with today?",
         "role": "assistant",
         "tool_calls": []
     }
@@ -232,7 +232,7 @@ For some use cases, especially user-facing ones with potentially long responses,
 
 ```bash httpie
 http POST \
-"https://25df35de87aa441b88f22a6c2a830a17-01.ai.ockam.network/agents/ef48fd1c0b8f342ef12bf679?stream=true" \
+"https://25df35de87aa441b88f22a6c2a830a17-01.ai.ockam.network/agents/henry?stream=true" \
 message="what is a patent"
 ```
 
@@ -241,26 +241,29 @@ message="what is a patent"
 curl --request POST \
 --header "Content-Type: application/json" \
 --data '{"message": "what is a patent"}' \
-"https://25df35de87aa441b88f22a6c2a830a17-01.ai.ockam.network/agents/ef48fd1c0b8f342ef12bf679?stream=true"
+"https://25df35de87aa441b88f22a6c2a830a17-01.ai.ockam.network/agents/henry?stream=true"
 ```
 
 </CodeGroup>
 
 ```json response
-
-{"scope": "None", "conversation": "None", "messages": [{"content": "(smirking) Ah, ye want to know who I be again, eh? Alright", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
-{"scope": "None", "conversation": "None", "messages": [{"content": " then, matey. I be Captain Jack Sparrow, the one and", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
-{"scope": "None", "conversation": "None", "messages": [{"content": " only. Me life be a tale of piracy, adventure, and a", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
-{"scope": "None", "conversation": "None", "messages": [{"content": " wee bit o' luck. I've sailed the Seven Seas, discovered", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
-{"scope": "None", "conversation": "None", "messages": [{"content": " hidden treasure, and battled the scurviest of scound", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
-{"scope": "None", "conversation": "None", "messages": [{"content": "rels.\n\nMe skills be many: I be a master swordsman, a", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
-{"scope": "None", "conversation": "None", "messages": [{"content": " cunning strategist, and a charismatic negotiator. Me", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
-{"scope": "None", "conversation": "None", "messages": [{"content": " ship, the Black Pearl, be me pride and joy, and me", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
-{"scope": "None", "conversation": "None", "messages": [{"content": " loyal crew be me family.\n\nBut, I be more than just", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
-{"scope": "None", "conversation": "None", "messages": [{"content": " a pirate, matey. I be a free spirit, a rebel, and a", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
-{"scope": "None", "conversation": "None", "messages": [{"content": " trickster. I live by me own rules, and I never back", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
-{"scope": "None", "conversation": "None", "messages": [{"content": " down from a challenge. Me motto be \"Savvy?\" \u2013 and I", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
-{"scope": "None", "conversation": "None", "messages": [{"content": " always be lookin' for the next great adventure.\n\nSo", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
-{"scope": "None", "conversation": "None", "messages": [{"content": ", now ye know who I be. What be yer business with me", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
-{"scope": "None", "conversation": "None", "messages": [{"content": ", matey?", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
+{"scope": "None", "conversation": "None", "messages": [{"content": "I'm Henry, an expert legal assistant. I have a deep", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
+{"scope": "None", "conversation": "None", "messages": [{"content": " understanding of the law and its applications, gained", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
+{"scope": "None", "conversation": "None", "messages": [{"content": " through extensive research, training, and experience", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
+{"scope": "None", "conversation": "None", "messages": [{"content": ". My expertise spans various areas of law, including", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
+{"scope": "None", "conversation": "None", "messages": [{"content": ":\n\n1. Contract law: I can help with contract review", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
+{"scope": "None", "conversation": "None", "messages": [{"content": ", negotiation, and drafting.\n2. Tort law: I'm familiar", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
+{"scope": "None", "conversation": "None", "messages": [{"content": " with personal injury claims, negligence, and liability", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
+{"scope": "None", "conversation": "None", "messages": [{"content": ".\n3. Family law: I can provide guidance on divorce,", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
+{"scope": "None", "conversation": "None", "messages": [{"content": " child custody, and support.\n4. Employment law: I'm", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
+{"scope": "None", "conversation": "None", "messages": [{"content": " knowledgeable about employment contracts, labor laws", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
+{"scope": "None", "conversation": "None", "messages": [{"content": ", and workplace disputes.\n5. General law: I can assist", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
+{"scope": "None", "conversation": "None", "messages": [{"content": " with wills, estates, and other general legal matters", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
+{"scope": "None", "conversation": "None", "messages": [{"content": ".\n\nAs a legal assistant, my role is to provide support", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
+{"scope": "None", "conversation": "None", "messages": [{"content": " and guidance, but not to offer formal legal advice", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
+{"scope": "None", "conversation": "None", "messages": [{"content": ". If you need specific, personalized advice, I can help", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
+{"scope": "None", "conversation": "None", "messages": [{"content": " you find a qualified attorney who can assist you.\n\n", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
+{"scope": "None", "conversation": "None", "messages": [{"content": "I'm here to help answer your questions, provide information", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
+{"scope": "None", "conversation": "None", "messages": [{"content": ", and offer insights into the law. What's on your mind", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
+{"scope": "None", "conversation": "None", "messages": [{"content": "?", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
 ```
