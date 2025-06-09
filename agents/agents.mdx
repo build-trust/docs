@@ -117,18 +117,11 @@ The Node by default, also starts an HTTP server.
 Ensure you have [Docker](https://www.docker.com/get-started/) installed and running on your workstation before running the `ockam` command.
 </Note>
 
-When you run `ockam` it will:
-
-- Build the image from the Dockerfile
-- Deploy the container to the Ockam serverless runtime
-- Expose a public HTTP endpoint to the agent
-- Create two local (i.e., on your workstation) portals to the agent's HTTP endpoint and log output.
-
 When you run `ockam`, it:
 
 1. Builds the code in `images/main` into a container image and pushes that image to your Zone.
-2. Deploys the Zone into your Cluster based on the configuration in `ockam.yaml`.
-3. Opens a portal inlet on your local workstation that connects to the outlet in the `main-pod`.
+3. Deploys the Zone into your Cluster based on the configuration in `ockam.yaml`.
+4. Opens two portal inlets on your local workstation that connects to outlets in the `main-pod`.
 
 ```
   Deploying zone 01 in cluster 25df35de87aa441b88f22a6c2a830a17...
