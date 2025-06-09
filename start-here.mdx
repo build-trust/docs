@@ -123,7 +123,7 @@ async def main(node):
 Node.start(main)
 ```
 
-`main.py` file contains the core logic for your app. It uses the `ockam` python package to:
+The `main.py` file contains the core logic for your app. It uses the `ockam` python package to:
 
 1. Start a Node that will invoke the `main` function after initialization.
 2. The main function start an agent on that node with specific instructions ("You are Jack Sparrow").
@@ -146,6 +146,6 @@ Node.start(main)
 When you run `ockam`, it:
 
 1. Builds the code in `images/main` into a container image and pushes that image to your Zone.
-2. Deploys the Zone into your Cluster based on the configuration in `ockam.yaml` .
-3. Opens a portal inlet on your local workstation that connects to the outlet in the `main-pod` .
+2. Deploys the Zone into your Cluster based on the configuration in `ockam.yaml`.
+3. Opens a portal inlet on your local workstation that connects to the outlet in the `main-pod`.
 4. Connects to the agent's REPL over this private and secure portal.
