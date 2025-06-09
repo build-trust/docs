@@ -106,13 +106,11 @@ async def main(node):
 Node.start(main)
 ```
 
-The `main.py` file contains the core logic for your app. It uses the `ockam` python package to:
+The `main.py` file contains the core logic for your app. It:
 
-1. Start a Node that will invoke the `main` function after initialization.
-2. The main function starts an agent with specific instructions.
-3. The agent is named `henry`.
-4. The main function then sends a message to the agent.
-5. It then prints the reply from the agent.
+1. Starts an Ockam Node that invokes the `main` function after initialization.
+2. The main function starts an agent name `henry` with specific instructions.
+3. It then sends a message to the agent and prints the agent’s reply.
 
 The Node, by default, also starts an HTTP server.
 
