@@ -11,6 +11,8 @@ The core of any agent is its model. Models are AI systems that transform input d
 
 If no model is explicitly defined an agent will default to using the `llama3.2` model. You can specify any model you prefer by passing the `model` argument to `Agent.start()`:
 
+<RequestExample>
+
 ```python images/main/main.py
 from ockam import Agent, Model, Node
 
@@ -19,13 +21,18 @@ async def main(node):
     await Agent.start(
         node=node,
         name="henry",
-        instructions="You are Henry, an expert legal assistant",
         model=Model("claude-3-7-sonnet-v1"),
+        instructions="""
+            You are Henry, an expert legal assistant
+        """
     )
 
 
 Node.start(main)
 ```
+
+</RequestExample>
+
 
 The code above changes the agent to use the `claude-3-7-sonnet-v1` model. To use `deepseek-r1` change the model to:
 
@@ -37,8 +44,10 @@ async def main(node):
     await Agent.start(
         node=node,
         name="henry",
-        instructions="You are Henry, an expert legal assistant",
         model=Model("deepseek-r1"),
+        instructions="""
+            You are Henry, an expert legal assistant
+        """
     )
 
 
