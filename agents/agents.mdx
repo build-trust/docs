@@ -14,7 +14,6 @@ Python apps running in Ockam AI can create millions of collaborating agents. Ock
 - Invokes [tools](/agents/tools) to access information and take actions.
 - Collaborates with and can delegate work to other agents.
 
-
 <RequestExample>
 
 ```python images/main/main.py
@@ -36,9 +35,31 @@ Node.start(main)
 
 </RequestExample>
 
+Let’s deploy a new app, with a legal assistant agent.
+
 <Tip>
-  You can find all the code for this example [on Github](https://github.com/build-trust/ockam/tree/develop/examples/001).
+You can find all the code for this example [on Github](https://github.com/build-trust/ockam/tree/develop/examples/001).
 </Tip>
+
+Within the app directory, create the following files:
+
+```bash app
+» tree
+
+├── ockam.yaml
+└── images
+    └── main
+        ├── Dockerfile
+        └── main.py
+```
+
+- The `ockam.yaml` configuration file defines how to deploy your zone.
+- The `images` directory contains the source code of docker images.
+  - Inside it, there is a directory for the `main` image.
+    - `Dockerfile` describe how the main image will be compiled.
+    - `main.py` is the Python program that is run by the main image.
+
+Let’s define them one by one:
 
 ```yaml ockam.yaml
 name: 01
@@ -50,21 +71,13 @@ pods:
         image: main
 ```
 
-There are three key files that define an agent. First is the `ockam.yaml` file:
+The `ockam.yaml` configuration file defines how to deploy your app:
 
-The `ockam.yaml` file above defines:
+- Create a zone named `01` .
+- Create a pod named `main-pod`inside the `01` zone.
+- Make the pod public.
+- Run a `main` container using the `main` image.
 
-- `name: 01` - A unique name for this deployment zone
-- `pods` - A list of pods to run in the zone
-  - `name: main-pod` - The name of the pod
-  - `public: true` - Makes the pod accessible from the internet
-  - `containers` - The containers to run in the pod
-    - `name: main` - Container name
-    - `image: main` - References the image built from the `Dockerfile` located at `images/<value>/Dockerfile`
-
-This minimal configuration creates a deployment that runs our agent code.
-
-Next is the `Dockerfile` file:
 
 ```bash images/main/Dockerfile
 FROM ghcr.io/build-trust/ockam-python:latest
@@ -72,30 +85,33 @@ COPY . .
 ENTRYPOINT ["python", "main.py"]
 ```
 
-The `Dockerfile` above:
+The `Dockerfile` bases the `main` image on the `ockam-python` image with already contains the `ockam` python package. The `Dockerfile` then copies the contents of the `images/main` directory into the image and runs the `main.py` python program.
 
-- Uses the official Ockam Python base image which includes the Ockam SDK
-- Copies the agent code (main.py and other files) into the container
-- Sets the entrypoint to run main.py when the container starts
-
-Finally is the `main.py` file:
 
 ```python images/main/main.py
 from ockam import Agent, Node
 
 
 async def main(node):
-    await Agent.start(node, "You are Henry, an expert legal assistant", "henry")
+    await Agent.start(
+        node=node,
+        name="henry",
+        instructions="""
+            You are Henry, an expert legal assistant.
+        """
+    )
 
 
 Node.start(main)
 ```
 
-The `main.py` file above:
+`main.py` file contains the core logic for your app. It uses the `ockam` python package to:
 
-- Imports the Ockam SDK
-- Defines an async main function that starts an agent with a specific prompt
-- Starts the node and agent
+1. Start a Node that will invoke the `main` function after initialization.
+2. The main function start an agent on that node with specific instructions.
+3. The agent is named `henry`.
+
+The Node by default, also starts an HTTP server.
 
 <Note>
   Ensure you have [Docker](https://www.docker.com/get-started/) installed and running on your workstation before running the `ockam` command.

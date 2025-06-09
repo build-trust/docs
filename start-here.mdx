@@ -62,7 +62,7 @@ description: "Deploy your first agent"
 
 ### The generated code
 
-Within the `hello` directory, `ockam` has created a new project with the following files:
+Within the `hello` directory, `ockam` has created the following files:
 
 ```bash Generated Files
 » tree
@@ -73,8 +73,6 @@ Within the `hello` directory, `ockam` has created a new project with the followi
         ├── Dockerfile
         └── main.py
 ```
-
-Within the `hello` directory, `ockam` has created a new project with the following files:
 
 - The `ockam.yaml` configuration file defines how to deploy your zone.
 - The `images` directory contains the source code of docker images.
@@ -97,7 +95,7 @@ pods:
         - to: localhost:9000
 ```
 
-The `ockam.yaml` configuration file defines how to deploy your agent:
+The `ockam.yaml` configuration file defines how to deploy your app:
 
 - Create a zone named `hello` .
 - Create a pod named `main-pod`inside the `hello` zone.
@@ -128,7 +126,7 @@ Node.start(main)
 `main.py` file contains the core logic for your app. It uses the `ockam` python package to:
 
 1. Start a Node that will invoke the `main` function after initialization.
-2. The main function start an agent on that node with a specific prompt ("You are Jack Sparrow").
+2. The main function start an agent on that node with specific instructions ("You are Jack Sparrow").
 3. It then starts a REPL (interactive shell) server that for that agent.
 
 ```Output Output
