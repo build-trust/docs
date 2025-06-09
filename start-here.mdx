@@ -108,7 +108,7 @@ COPY . .
 ENTRYPOINT ["python", "main.py"]
 ```
 
-The `Dockerfile` bases the `main` image on the `ockam-python` image with already contains the `ockam` python package. The `Dockerfile` then copies the contents of the `images/main` directory into the image and runs the `main.py` python program.
+The `Dockerfile` bases the `main` image on the `ockam-python` image which already contains the `ockam` python package. The `Dockerfile` then copies the contents of the `images/main` directory into the image and runs the `main.py` python program.
 
 ```python images/main/main.py
 from ockam import Agent, Node, Repl
@@ -126,8 +126,8 @@ Node.start(main)
 The `main.py` file contains the core logic for your app. It uses the `ockam` python package to:
 
 1. Start a Node that will invoke the `main` function after initialization.
-2. The main function start an agent on that node with specific instructions ("You are Jack Sparrow").
-3. It then starts a REPL (interactive shell) server that for that agent.
+2. The main function starts an agent on that node with specific instructions (“You are Jack Sparrow”).
+3. It then starts a REPL (interactive shell) server for that agent.
 
 ```Output Output
 .   Deploying zone hello in cluster 25df35de87aa441b88f22a6c2a830a17...

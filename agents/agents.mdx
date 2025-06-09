@@ -84,7 +84,7 @@ COPY . .
 ENTRYPOINT ["python", "main.py"]
 ```
 
-The `Dockerfile` bases the `main` image on the `ockam-python` image with already contains the `ockam` python package. The `Dockerfile` then copies the contents of the `images/main` directory into the image and runs the `main.py` python program.
+The `Dockerfile` bases the `main` image on the `ockam-python` image which already contains the `ockam` python package. The `Dockerfile` then copies the contents of the `images/main` directory into the image and runs the `main.py` python program.
 
 ```python images/main/main.py
 from ockam import Agent, Node
@@ -106,7 +106,7 @@ Node.start(main)
 The `main.py` file contains the core logic for your app. It uses the `ockam` python package to:
 
 1. Start a Node that will invoke the `main` function after initialization.
-2. The main function start an agent on that node with specific instructions.
+2. The main function starts an agent on that node with specific instructions.
 3. The agent is named `henry`.
 
 The Node by default, also starts an HTTP server.
@@ -115,10 +115,10 @@ The Node by default, also starts an HTTP server.
   Ensure you have [Docker](https://www.docker.com/get-started/) installed and running on your workstation before running the `ockam` command.
 </Note>
 
-When you run `ockam`, it:
+When you run `ockam` in the directory that has an `ockam.yaml` , the command:
 
-1. Builds the code in `images/main` into a container image and pushes that image to your Zone.
-2. Deploys the Zone into your Cluster based on the configuration in `ockam.yaml`.
+1. Builds each image in `images/` and pushes them to a registry that is available to your Zone.
+2. Deploys the Zone into your Cluster in Ockam AI based on configuration in `ockam.yaml`.
 3. Opens two portal inlets on your local workstation that connect to outlets in the `main-pod`.
 
 ```
@@ -137,6 +137,10 @@ When you run `ockam`, it:
 ✔ Opened a portal to the outlet logs on logs-pod from tcp://localhost:3000
 ```
 
+## Logs
+
+You can see the logs for all containers in your deployed zone at `http://localhost:3000/logs/explorer` .
+
 ## Arguments
 
 - `name`
@@ -152,10 +156,6 @@ When you run `ockam`, it:
 - `prompt`
 - `scope`
 - `conversation`
-
-## Logs
-
-You can see the logs of your running python app on `http://localhost:3000/logs/explorer` .
 
 ## HTTP Server
 
