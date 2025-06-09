@@ -1,10 +1,10 @@
 ---
 title: "Agents"
 icon: "star-shooting"
-description: "Ockam Agents are intelligent autonomous actors."
+description: "Intelligent autonomous actors that accomplish complex tasks."
 ---
 
-Python apps running in Ockam AI can create millions of collaborating agents. Ockam Agents are autonomous actors that accomplish complex open ended tasks. Each agent:
+Ockam Agents are autonomous actors that accomplish complex open ended tasks. Python apps running in Ockam AI can create millions of collaborating agents. Each agent:
 
 - Has a unique identity.
 - Uses a large language [model](/agents/models) to understand natual language.
@@ -38,7 +38,7 @@ Node.start(main)
 Let’s deploy a new app, with a legal assistant agent.
 
 <Tip>
-You can find all the code for this example [on Github](https://github.com/build-trust/ockam/tree/develop/examples/001).
+  You can find all the code for this example [on Github](https://github.com/build-trust/ockam/tree/develop/examples/001).
 </Tip>
 
 Within the app directory, create the following files:
@@ -78,7 +78,6 @@ The `ockam.yaml` configuration file defines how to deploy your app:
 - Make the pod public.
 - Run a `main` container using the `main` image.
 
-
 ```bash images/main/Dockerfile
 FROM ghcr.io/build-trust/ockam-python:latest
 COPY . .
@@ -86,7 +85,6 @@ ENTRYPOINT ["python", "main.py"]
 ```
 
 The `Dockerfile` bases the `main` image on the `ockam-python` image with already contains the `ockam` python package. The `Dockerfile` then copies the contents of the `images/main` directory into the image and runs the `main.py` python program.
-
 
 ```python images/main/main.py
 from ockam import Agent, Node
@@ -114,14 +112,14 @@ The `main.py` file contains the core logic for your app. It uses the `ockam` pyt
 The Node by default, also starts an HTTP server.
 
 <Note>
-Ensure you have [Docker](https://www.docker.com/get-started/) installed and running on your workstation before running the `ockam` command.
+  Ensure you have [Docker](https://www.docker.com/get-started/) installed and running on your workstation before running the `ockam` command.
 </Note>
 
 When you run `ockam`, it:
 
 1. Builds the code in `images/main` into a container image and pushes that image to your Zone.
-3. Deploys the Zone into your Cluster based on the configuration in `ockam.yaml`.
-4. Opens two portal inlets on your local workstation that connect to outlets in the `main-pod`.
+2. Deploys the Zone into your Cluster based on the configuration in `ockam.yaml`.
+3. Opens two portal inlets on your local workstation that connect to outlets in the `main-pod`.
 
 ```
 . Deploying zone 01 in cluster 25df35de87aa441b88f22a6c2a830a17...
