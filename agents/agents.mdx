@@ -91,13 +91,16 @@ from ockam import Agent, Node
 
 
 async def main(node):
-    await Agent.start(
+    agent = await Agent.start(
         node=node,
         name="henry",
         instructions="""
             You are Henry, an expert legal assistant.
         """
     )
+
+    reply = await agent.send("who are you?")
+    print(reply)
 
 
 Node.start(main)
@@ -108,8 +111,9 @@ The `main.py` file contains the core logic for your app. It uses the `ockam` pyt
 1. Start a Node that will invoke the `main` function after initialization.
 2. The main function starts an agent on that node with specific instructions.
 3. The agent is named `henry`.
+4. The main function then sends a message to the agent and prints the reply from the agent.
 
-The Node by default, also starts an HTTP server.
+The Node, by default, also starts an HTTP server.
 
 <Note>
   Ensure you have [Docker](https://www.docker.com/get-started/) installed and running on your workstation before running the `ockam` command.
@@ -117,9 +121,9 @@ The Node by default, also starts an HTTP server.
 
 When you run `ockam` in the directory that has an `ockam.yaml` , the command:
 
-1. Builds each image in `images/` and pushes them to a registry that is available to your Zone.
-2. Deploys the Zone into your Cluster in Ockam AI based on configuration in `ockam.yaml`.
-3. Opens two portal inlets on your local workstation that connect to outlets in the `main-pod`.
+1. Builds each image in `images/` and pushes them to a container image registry that is available to your Zone.
+2. Deploys the Zone into your Cluster, in Ockam AI, based on the configuration that you specified above in `ockam.yaml`.
+3. Opens two portal inlets on your local workstation that connect to corresponding outlets in the `main-pod` that is running in your Zone in Ockam AI.
 
 ```
 . Deploying zone 01 in cluster 25df35de87aa441b88f22a6c2a830a17...
