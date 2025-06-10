@@ -84,7 +84,7 @@ COPY . .
 ENTRYPOINT ["python", "main.py"]
 ```
 
-The `Dockerfile` bases the `main` image on the `ockam-python` image which already contains the `ockam` python package. The `Dockerfile` then copies the contents of the `images/main` directory into the image and runs the `main.py` python program.
+The `Dockerfile` bases the `main` image on the `ockam-python` image which already contains the `ockam` python package. The `Dockerfile` then copies the contents of the `images/main` directory into the image and sets `main.py` as the program to run when the container is started.
 
 ```python images/main/main.py
 from ockam import Agent, Node
@@ -142,7 +142,7 @@ Run the `ockam` command in the directory that has the `ockam.yaml`, it will:
 
 ### Logs
 
-You can see the logs for all containers in your deployed zone at `http://localhost:3000/logs/explorer` .
+You can see the logs for all containers in your deployed zone at `http://localhost:3000`.
 
 ### HTTP
 
@@ -162,6 +162,7 @@ http GET \
 "https://25df35de87aa441b88f22a6c2a830a17-01.ai.ockam.network/agents"
 ```
 
+
 ```bash curl
 curl --request GET \
 "https://25df35de87aa441b88f22a6c2a830a17-01.ai.ockam.network/agents"
@@ -178,6 +179,7 @@ http POST \
 "https://25df35de87aa441b88f22a6c2a830a17-example001.ai.ockam.network/agents/henry" \
 message="who are you?"
 ```
+
 
 ```bash curl
 curl --request POST \
@@ -197,6 +199,7 @@ http POST \
 "https://25df35de87aa441b88f22a6c2a830a17-01.ai.ockam.network/agents/henry?stream=true" \
 message="what is a patent"
 ```
+
 
 ```bash curl
 curl --request POST \

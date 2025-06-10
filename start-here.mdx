@@ -62,7 +62,7 @@ description: "Deploy your first agent"
 
 ### The generated code
 
-Within the `hello` directory, `ockam` has created the following files:
+Within the `hello` directory, `ockam` has created the following three files:
 
 ```bash Generated Files
 » tree
@@ -74,9 +74,9 @@ Within the `hello` directory, `ockam` has created the following files:
         └── main.py
 ```
 
-- The `ockam.yaml` configuration file defines how to deploy your zone.
-- The `images` directory contains the source code of docker images.
-  - Inside it, there is a directory for the `main` image.
+- The `ockam.yaml` configuration file defines how to deploy a Zone in your Cluster in Ockam AI.
+- The `images` directory contains the source code of docker images that will be used to run containers in your Zone.
+  - Inside `images`, there is a directory for the `main` image.
     - `Dockerfile` describe how the main image will be compiled.
     - `main.py` is the Python program that is run by the main image.
 
@@ -95,12 +95,13 @@ pods:
         - to: localhost:9000
 ```
 
-The `ockam.yaml` configuration file defines how to deploy your app:
+The `ockam.yaml` configuration file defines how to deploy your Zone:
 
-- Create a zone named `hello` .
-- Create a pod named `main-pod`inside the `hello` zone.
+- Create a Zone named `01` .
+- Create a Pod named `main-pod`inside the `01` Zone.
+- Make the HTTP server, in the `main` container in this pod, public.
 - Run a `main` container using the `main` image.
-- Set up a portal outlet that will allow other nodes to reach `localhost:9000` in this pod.
+- Set up a portal outlet that will allow you to reach `localhost:9000` in this pod.
 
 ```bash images/main/Dockerfile
 FROM ghcr.io/build-trust/ockam-python:latest
@@ -108,7 +109,7 @@ COPY . .
 ENTRYPOINT ["python", "main.py"]
 ```
 
-The `Dockerfile` bases the `main` image on the `ockam-python` image which already contains the `ockam` python package. The `Dockerfile` then copies the contents of the `images/main` directory into the image and runs the `main.py` python program.
+The `Dockerfile` bases the `main` image on the `ockam-python` image which already contains the `ockam` python package. The `Dockerfile` then copies the contents of the `images/main` directory into the image and sets `main.py` as the program to run when the container is started.
 
 ```python images/main/main.py
 from ockam import Agent, Node, Repl
@@ -123,10 +124,10 @@ async def main(node):
 Node.start(main)
 ```
 
-The `main.py` file contains the core logic for your app. It uses the `ockam` python package to:
+The `main.py` file:
 
-1. Start a Node that will invoke the `main` function after initialization.
-2. The main function starts an agent on that node with specific instructions (“You are Jack Sparrow”).
+1. Turns your Python app into an Ockam Node. An Ockam Node in your Cluster can connect with and deliver messages to any other Ockam Node in your Cluster that is running in Ockam AI.
+2. After the Node is initialized, it invokes the `main` function defined in your `main.py` file. The `main` function starts an agent with specific instructions (_“You are Jack Sparrow”_).
 3. It then starts a REPL (interactive shell) server for that agent.
 
 ```Output Output
@@ -145,7 +146,7 @@ The `main.py` file contains the core logic for your app. It uses the `ockam` pyt
 
 When you run `ockam`, it:
 
-1. Builds the code in `images/main` into a container image and pushes that image to your Zone.
-2. Deploys the Zone into your Cluster based on the configuration in `ockam.yaml`.
-3. Opens a portal inlet on your local workstation that connects to the outlet in the `main-pod`.
-4. Connects to the agent's REPL over this private and secure portal.
+1. Builds the code in `images/main` into a container image and pushes it to a container registry that is available to your Zone.
+2. Deploys the Zone into your Cluster, in Ockam AI, based on the configuration that is specified above in `ockam.yaml`.
+3. Opens a portal inlet on your workstation that connects to the outlet in the `main-pod` . This creates a portal to the REPL server in your `main` container and makes that server available on a local port on your workstation.
+4. Connects a REPL client to the REPL server over this private and secure portal.
