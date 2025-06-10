@@ -71,11 +71,11 @@ pods:
         image: main
 ```
 
-The `ockam.yaml` configuration file defines how to deploy your app:
+The `ockam.yaml` configuration file defines how to deploy your Zone:
 
-- Create a zone named `01` .
-- Create a pod named `main-pod`inside the `01` zone.
-- Make the pod public.
+- Create a Zone named `01` .
+- Create a Pod named `main-pod`inside the `01` Zone.
+- Make the HTTP server, in the `main` container in this pod, public.
 - Run a `main` container using the `main` image.
 
 ```bash images/main/Dockerfile
@@ -110,7 +110,7 @@ The `main.py` file:
 
 1. Turns your Python app into an Ockam Node. An Ockam Node in your Cluster can connect with and deliver messages to any other Ockam Node in your Cluster that is running in Ockam AI.
 2. After the Node is initialized, it invokes the `main` function defined in your `main.py` file. The `main` function starts an agent name `henry` with specific instructions. It then sends a message to this agent and prints the agent’s reply.
-3. `Node.start` also starts an HTTP server embedded within your Python app.
+3. `Node.start` also starts an HTTP server within this Python app.
 
 ### Run
 
