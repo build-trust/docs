@@ -37,6 +37,8 @@ Node.start(main)
 
 </RequestExample>
 
+### Build
+
 <Tip>
   You can find all the code for the following example [on Github](https://github.com/build-trust/ockam/tree/develop/examples/001).
 </Tip>
@@ -108,20 +110,21 @@ Node.start(main)
 
 The `main.py` file:
 
-1. Turns your Python app into an Ockam Node. An Ockam Node in your Cluster can connect with and deliver messages to any other Ockam Node in your Cluster.
+1. Turns your Python app into an Ockam Node. An Ockam Node in your Cluster can connect with and deliver messages to any other Ockam Node in your Cluster that is running in Ockam AI.
 2. After the Node is initialized, it invokes the `main` function defined in your `main.py` file. The `main` function starts an agent name `henry` with specific instructions. It then sends a message to this agent and prints the agent’s reply.
+3. `Node.start` also starts an HTTP server embedded within your Python app.
 
-The Node, when it starts, also starts an embedded HTTP server.
+### Run
 
 <Note>
-  Ensure you have [Docker](https://www.docker.com/get-started/) installed and running on your workstation before running the `ockam` command.
+  Check that you have [Docker](https://www.docker.com/get-started/) installed and it is running on your workstation before running the `ockam` command.
 </Note>
 
-When you run `ockam` in the directory that has an `ockam.yaml` , it:
+Run the `ockam` command in the directory that has the `ockam.yaml` , it will:
 
-1. Builds each image in `images/` and pushes them to a container registry that is available to your Zone.
-2. Deploys the Zone into your Cluster, in Ockam AI, based on the configuration that you specified above in `ockam.yaml`.
-3. Opens two portal inlets on your workstation that connect to corresponding outlets in the `main-pod` that is running in your Zone in Ockam AI.
+1. Build each image in `images/` and pushe them to a container registry that is available to your Zone.
+2. Deploy the Zone into your Cluster, in Ockam AI, based on the configuration that you specified above in `ockam.yaml`.
+3. Open two portal inlets on your workstation that connect to corresponding outlets in the `main-pod` that is running in your Zone in Ockam AI.
 
 ```
 . Deploying zone 01 in cluster 25df35de87aa441b88f22a6c2a830a17...
