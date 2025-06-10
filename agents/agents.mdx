@@ -106,13 +106,14 @@ async def main(node):
 Node.start(main)
 ```
 
-The `main.py` file contains the core logic for your app. It:
+The `main.py` file:
 
-1. Starts an Ockam Node that invokes the `main` function after initialization.
-2. The main function starts an agent name `henry` with specific instructions.
-3. It then sends a message to the agent and prints the agent’s reply.
+1. Turns you Python app into an Ockam Node.
+2. Ockam Nodes in your Cluster can connect with and deliver messages to any other Ockam Node in your Cluster.
+3. After the Node is initialization, it invokes the `main` function in `main.py` .
+4. The `main` function starts an agent name `henry` with specific instructions. It then sends a message to this agent and prints the agent’s reply.
 
-The Node, by default, also starts an HTTP server.
+The Node, when it starts, also starts an embedded HTTP server.
 
 <Note>
   Ensure you have [Docker](https://www.docker.com/get-started/) installed and running on your workstation before running the `ockam` command.
