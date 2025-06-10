@@ -144,9 +144,8 @@ The `main.py` file:
   ✔ Opened a portal to the outlet logs on logs-pod from tcp://localhost:3000
 ```
 
-When you run `ockam`, it:
+When you run `ockam`:
 
-1. Builds the code in `images/main` into a container image and pushes it to a container registry that is available to your Zone.
-2. Deploys the Zone into your Cluster, in Ockam AI, based on the configuration that is specified above in `ockam.yaml`.
-3. Opens a portal inlet on your workstation that connects to the outlet in the `main-pod` . This creates a portal to the REPL server in your `main` container and makes that server available on a local port on your workstation.
-4. Connects a REPL client to the REPL server over this private and secure portal.
+1. It builds the code in `images/main` into a container image and pushes it to a container registry that is available to your Zone. It then deploys the Zone into your Cluster, in Ockam AI, based on the configuration that is specified above in `ockam.yaml`.
+2. Next it opens a portal inlet on your workstation that connects to the outlet in the `main-pod` . This creates a portal to the REPL server in your `main` container and makes that server available on a local port on your workstation.
+3. Finally it connects a REPL client to the REPL server over this private and secure portal.
