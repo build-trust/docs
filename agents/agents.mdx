@@ -146,34 +146,16 @@ Run the `ockam` command in the directory that has the `ockam.yaml` , it will:
 
 You can see the logs for all containers in your deployed zone at `http://localhost:3000/logs/explorer` .
 
-## Arguments
-
-- `name`
-- `node`
-- `instructions`
-- `model`
-- `knowledge`
-- `tools`
-- `planner`
-
-### Instance arguments
-
-- `prompt`
-- `scope`
-- `conversation`
-
 ## HTTP Server
 
 By default the pod will expose a HTTP interface with a few endpoints interact with the deployed agents.
-
-### List agents
 
 The public URL for the HTTP server on your pod (each pod will have its own unique URL) is displayed in the example output above:
 
 > The http server on the main-pod is available at:
 > https://25df35de87aa441b88f22a6c2a830a17-01.ai.ockam.network
 
-To return a list of all agents running on that pod send a `GET` request to the `/agents` endpoint:
+To return a list of all agents send a `GET` request to the `/agents` endpoint:
 
 <CodeGroup>
 
@@ -190,20 +172,6 @@ curl --request GET \
 
 </CodeGroup>
 
-```json response
-{
-    "agents": [
-        {
-            "description": [],
-            "is_remote": false,
-            "name": "henry",
-            "workers": []
-        }
-    ]
-}
-```
-
-### Send prompt to agent
 
 To interact with a specific agent, send a `POST` request to the `/agents/<name>` endpoint:
 
@@ -225,19 +193,6 @@ curl --request POST \
 
 </CodeGroup>
 
-```json response
-
-[
-    {
-        "content": "My name is Henry, and I'm an expert legal assistant. I have extensive knowledge and experience in various aspects of law, including but not limited to, contract law, tort law, family law, employment law, and more. I can provide guidance on legal procedures, help with document preparation, and offer insights into different legal scenarios.\n\nWhile I'm not a licensed attorney, I can assist with general inquiries, provide information on legal concepts, and help navigate the complexities of the law. If you have a specific legal issue or concern, I'll do my best to provide you with helpful information and point you in the right direction.\n\nWhat can I help you with today?",
-        "role": "assistant",
-        "tool_calls": []
-    }
-]
-```
-
-### Send prompt to agent (\+ stream response)
-
 For some use cases, especially user-facing ones with potentially long responses, it may be preferable to stream the response. Passing a `stream=true` parameter to the `/agents/<name>` endpoint will stream chunked responses from the agent in real-time:
 
 <CodeGroup>
@@ -257,25 +212,3 @@ curl --request POST \
 ```
 
 </CodeGroup>
-
-```json response
-{"scope": "None", "conversation": "None", "messages": [{"content": "I'm Henry, an expert legal assistant. I have a deep", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
-{"scope": "None", "conversation": "None", "messages": [{"content": " understanding of the law and its applications, gained", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
-{"scope": "None", "conversation": "None", "messages": [{"content": " through extensive research, training, and experience", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
-{"scope": "None", "conversation": "None", "messages": [{"content": ". My expertise spans various areas of law, including", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
-{"scope": "None", "conversation": "None", "messages": [{"content": ":\n\n1. Contract law: I can help with contract review", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
-{"scope": "None", "conversation": "None", "messages": [{"content": ", negotiation, and drafting.\n2. Tort law: I'm familiar", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
-{"scope": "None", "conversation": "None", "messages": [{"content": " with personal injury claims, negligence, and liability", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
-{"scope": "None", "conversation": "None", "messages": [{"content": ".\n3. Family law: I can provide guidance on divorce,", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
-{"scope": "None", "conversation": "None", "messages": [{"content": " child custody, and support.\n4. Employment law: I'm", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
-{"scope": "None", "conversation": "None", "messages": [{"content": " knowledgeable about employment contracts, labor laws", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
-{"scope": "None", "conversation": "None", "messages": [{"content": ", and workplace disputes.\n5. General law: I can assist", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
-{"scope": "None", "conversation": "None", "messages": [{"content": " with wills, estates, and other general legal matters", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
-{"scope": "None", "conversation": "None", "messages": [{"content": ".\n\nAs a legal assistant, my role is to provide support", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
-{"scope": "None", "conversation": "None", "messages": [{"content": " and guidance, but not to offer formal legal advice", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
-{"scope": "None", "conversation": "None", "messages": [{"content": ". If you need specific, personalized advice, I can help", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
-{"scope": "None", "conversation": "None", "messages": [{"content": " you find a qualified attorney who can assist you.\n\n", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
-{"scope": "None", "conversation": "None", "messages": [{"content": "I'm here to help answer your questions, provide information", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
-{"scope": "None", "conversation": "None", "messages": [{"content": ", and offer insights into the law. What's on your mind", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
-{"scope": "None", "conversation": "None", "messages": [{"content": "?", "role": "assistant", "tool_calls": []}], "type": "conversation_snippet"}
-```
