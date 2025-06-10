@@ -43,7 +43,7 @@ Node.start(main)
   You can find all the code for the following example [on Github](https://github.com/build-trust/ockam/tree/develop/examples/001).
 </Tip>
 
-Let’s build and deploy a new app, that provides a Legal AI Agent. Within the app directory, create the following files:
+Let’s build a new app, that provides a Legal AI Agent. Within the app directory, create the following files:
 
 ```bash app
 » tree
@@ -55,7 +55,7 @@ Let’s build and deploy a new app, that provides a Legal AI Agent. Within the a
         └── main.py
 ```
 
-- The `ockam.yaml` configuration file defines how to deploy your zone.
+- The `ockam.yaml` configuration file defines how to deploy a Zone in your Cluster in Ockam AI.
 - The `images` directory contains the source code of docker images.
   - Inside it, there is a directory for the `main` image.
     - `Dockerfile` describe how the main image will be compiled.
@@ -120,9 +120,9 @@ The `main.py` file:
   Check that you have [Docker](https://www.docker.com/get-started/) installed and it is running on your workstation before running the `ockam` command.
 </Note>
 
-Run the `ockam` command in the directory that has the `ockam.yaml` , it will:
+Run the `ockam` command in the directory that has the `ockam.yaml`, it will:
 
-1. Build each image in `images/` and pushe them to a container registry that is available to your Zone.
+1. Build each image in `images/` and push them to a container registry that is available to your Zone.
 2. Deploy the Zone into your Cluster, in Ockam AI, based on the configuration that you specified above in `ockam.yaml`.
 3. Open two portal inlets on your workstation that connect to corresponding outlets in the `main-pod` that is running in your Zone in Ockam AI.
 
