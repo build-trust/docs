@@ -5,3 +5,22 @@ icon: envelopes-bulk
 mode: "wide"
 ---
 
+```python images/main/main.py
+from ockam import Agent, Node
+
+
+async def main(node):
+    agent = await Agent.start(
+        node=node,
+        name="henry",
+        instructions="""
+            You are Henry, an expert legal assistant.
+        """
+    )
+
+    reply = await agent.send("who are you?")
+    print(reply)
+
+
+Node.start(main)
+```

@@ -32,8 +32,7 @@
         "group": "COLLABORATION",
         "pages": [
           "collaboration/messages",
-          "collaboration/flows",
-          "collaboration/squads"
+          "collaboration/flows"
         ]
       },
       {
