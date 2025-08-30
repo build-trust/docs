@@ -39,7 +39,8 @@
         "group": "ENTERPRISE CONNECTIONS",
         "pages": [
           "integration/portals",
-          "integration/mcp"
+          "integration/mcp",
+          "integration/http"
         ]
       }
     ]
